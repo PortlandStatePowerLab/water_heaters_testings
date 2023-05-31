@@ -1,8 +1,8 @@
 ## Current Water Heaters Installed:
 - A. O. Smith EWH
 - A. O Smith HPWH
+- American Standard EWHs
 ## Soon to be installed:
-- American Standard EWHs.
 - Rheem EWHs.
 ### Requirements:
 NOTE: The water draw scripts are compatible with Python2.
