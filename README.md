@@ -5,6 +5,15 @@
 - American Standard EWHs.
 - Rheem EWHs.
 ### Requirements:
-The scripts within this repo are compatible with Python2.
+NOTE: The water draw scripts are compatible with Python2.
+
+- Update the Raspberry Pi Libraries:
+    - ```sudo apt update```
+    - ```sudo apt upgrade```
+
+- Install WiringPi:
+    - ``` wget https://project-downloads.drogon.net/wiringpi-latest.deb```
+    - ``` sudo dpkg -i wiringpi-latest.deb```
+
 ### TODO:
 Upgrade scripts so it is cmopatible with Python3

@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -std=c++11 -O0 -g -rdynamic CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o CMakeFiles/sample2.dir/sample2/sample2/mcp3008.cpp.o -o sample2  -Wl,-rpath,/home/pi/water_heaters_testings/dcs/build/debug libcea2045.so -lpthread -lwiringPi 
