@@ -1,5 +1,3 @@
-### Modified by Mohammed Alsaid and Midrar to suit some ao smith water heaters for a specifc case.
-
 # CTA2045 UCM C++ Library v.1.00
 Copyright (c) 2016, Electric Power Research Institute (EPRI)
 All rights reserved.
