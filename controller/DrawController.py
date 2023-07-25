@@ -44,7 +44,7 @@ thread_draw = Thread(target = draw_water, args = [0])
 
 times = []
 volumes = []
-file = open('gen4.csv')
+file = open('schedule.csv')
 read = csv.reader(file)
 for row in read:
     times.append(row[0])
