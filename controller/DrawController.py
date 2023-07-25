@@ -31,7 +31,7 @@ def draw_water(targetVol):
     while volume < targetVol:  #keep valve open until desired volume has passed
         if GPIO.event_detected(FMPIN):
             numPulses += 1    #Count pulses from flow meter
-            volume = float(numPulses) / 476    #Calculate volume
+            volume = float(numPulses) / 400    #Calculate volume. wh_1 k = 400
         run_time = time()
         elapsed_time = run_time - start_time
         if elapsed_time > 180:

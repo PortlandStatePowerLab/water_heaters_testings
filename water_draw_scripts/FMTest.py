@@ -25,7 +25,7 @@ while True:
     while volume < target:  #target test volume in gallons
         if GPIO.event_detected(FMPIN):
             numPulses += 1
-            volume = float(numPulses) / 424
+            volume = float(numPulses) / 400  # wh_1 k = 400
             #print ('Pulses: %1f' % numPulses)
             #print ('Volume: %f' % volume)
         run_time = time()
