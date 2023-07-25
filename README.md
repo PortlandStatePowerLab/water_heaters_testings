@@ -17,5 +17,3 @@ NOTE: The water draw scripts are compatible with Python2.
 
 ### TODO:
 Upgrade scripts so it is cmopatible with Python3
-
-dana
