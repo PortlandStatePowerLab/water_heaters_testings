@@ -31,10 +31,10 @@ def draw_water(targetVol):
     while volume < targetVol:  #keep valve open until desired volume has passed
         if GPIO.event_detected(FMPIN):
             numPulses += 1    #Count pulses from flow meter
-            volume = float(numPulses) / 500    #Calculate volume. wh_1 k = 500
+            volume = float(numPulses) / 500    #Calculate volume
         run_time = time()
         elapsed_time = run_time - start_time
-        if elapsed_time > 180:
+        if elapsed_time > 60*10: # timeout 10 minutes
             print('Timeout Error.')
             break
     GPIO.output(VPIN, GPIO.LOW) #close valve
@@ -59,14 +59,14 @@ while True:
         data = open(filename, 'w')
         data.write('Time,Draw Amount\n')
         data.close
-        
+
     #Draw water if there is an event at this minute
     timestr = datetime.strftime(now, "%H:%M:%S")
     drawVolume = 0
     for i in range(0,len(times)):
         if times[i] == timestr:
             drawVolume = volumes[i]
-            
+
     if drawVolume != 0:
         if thread_draw.is_alive() == True:
             print('Debugging: Previous draw is still running. Waiting for draw to finish.\n')
