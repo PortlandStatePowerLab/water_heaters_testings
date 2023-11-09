@@ -9,7 +9,7 @@ GPIO.setup(VPIN, GPIO.OUT, initial=GPIO.LOW)
 GPIO.add_event_detect(FMPIN, GPIO.RISING)   #add rising edge detection
 
 while True:
-    target = raw_input('Enter desired water volume in gallons:')
+    target = input('Enter desired water volume in gallons:')
     target = float(target)
     if target == 0:
         GPIO.output(VPIN, GPIO.LOW) #close valve and quit if no water is requested

@@ -31,7 +31,7 @@ def draw_water(targetVol):
     while volume < targetVol:  #keep valve open until desired volume has passed
         if GPIO.event_detected(FMPIN):
             numPulses += 1    #Count pulses from flow meter
-            volume = float(numPulses) / 500    #Calculate volume
+            volume = float(numPulses) / 476    #Calculate volume
         run_time = time()
         elapsed_time = run_time - start_time
         if elapsed_time > 60*10: # timeout 10 minutes
@@ -50,6 +50,9 @@ for row in read:
     times.append(row[0])
     volumes.append(row[1])
 file.close()
+
+print('Starting 24 Hour Scheduled Draw.  '+str(datetime.now()))
+print('\nWaiting for draw...')
 
 #Enter main program loop
 while True:
