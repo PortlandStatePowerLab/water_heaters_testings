@@ -8,8 +8,8 @@ from datetime import datetime, timedelta
 wh_type = input('WH Brand:')
 volume = input('Capacity (gallons):')
 
-arguments = [['s\n'],['c\n'],['g\n']]
-DRcom = [['Shed'], ['CriticalPeakEvent'], ['GridEmergency']]
+arguments = [['e\n'],['s\n'],['c\n'],['g\n']]
+DRcom = [['Baseline'],['Shed'], ['CriticalPeakEvent'], ['GridEmergency']]
 
 outsideComm = 'o\n'
 
@@ -77,7 +77,7 @@ time.sleep(delay)
 
 for arg,com in zip(arguments, DRcom):
 
-    output_file = 'testlog/'+wh_type+volume+'_'+com[0]+'_log.csv' # create new csv output file name
+    output_file = 'testlog/'+wh_type+volume+'_'+com[0]+'.csv' # create new csv output file name
 
     with open(input_file, 'r') as input_csv:   # slice log.csv file
         reader = csv.reader(input_csv)
@@ -89,6 +89,7 @@ for arg,com in zip(arguments, DRcom):
     process.stdin.flush()
 
     sleep_timer = 60*60*24*2  # sleep for 2 days
+
 
     while sleep_timer > 0:
         # send outside comm every 10 minutes
