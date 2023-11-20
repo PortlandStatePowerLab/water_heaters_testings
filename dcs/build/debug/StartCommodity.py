@@ -8,8 +8,37 @@ from datetime import datetime, timedelta
 wh_type = input('WH Brand:')
 volume = input('Capacity (gallons):')
 
-arguments = [['e\n'],['s\n'],['c\n'],['g\n']]
-DRcom = [['Baseline'],['Shed'], ['CriticalPeakEvent'], ['GridEmergency']]
+yes = ['y', 'Y', 'yes', 'Yes', 'YES']
+
+
+arguments = []
+DRcom = []
+
+baseline = input('Do you want to test Baseline (y/n)?')
+if baseline in yes:
+    arguments.append(['e\n'])
+    DRcom.append(['Baseline'])
+
+shed = input('Do you want to test Shed (y/n)?')
+if shed in yes:
+    arguments.append(['s\n'])
+    DRcom.append(['Shed'])
+
+cpe = input('Do you want to test CriticalPeakEvent (y/n)?')
+if cpe in yes:
+    arguments.append(['c\n'])
+    DRcom.append(['CriticalPeakEvent'])
+
+ge = input('Do you want to test GridEmergency (y/n)?')
+if ge in yes:
+    arguments.append(['g\n'])
+    DRcom.append(['GridEmergency'])
+
+
+print('Testing for the following:')
+for com in DRcom:
+    print(com[0])
+
 
 outsideComm = 'o\n'
 
@@ -33,7 +62,7 @@ def start_commodity(mode):
 
 def update_csv(input_file, output_file, last_line):
     with open(input_file, 'r') as input_csv, open(output_file, 'a') as output_csv:
-        reader = csv.reader(input_csv)
+        reader = csv.reader((row.replace('\0','') for row in input_csv), delimiter=',')
         writer = csv.writer(output_csv)
         for i, row in enumerate(reader):
             if i > last_line:
@@ -79,8 +108,8 @@ for arg,com in zip(arguments, DRcom):
 
     output_file = 'testlog/'+wh_type+volume+'_'+com[0]+'.csv' # create new csv output file name
 
-    with open(input_file, 'r') as input_csv:   # slice log.csv file
-        reader = csv.reader(input_csv)
+    with open(input_file, 'r', newline='', encoding='utf-8') as input_csv:   # slice log.csv file
+        reader = csv.reader((row.replace('\0','') for row in input_csv), delimiter=',')
         last_line = sum(1 for row in reader) - 1
 
     start_commodity(outsideComm)
@@ -90,20 +119,19 @@ for arg,com in zip(arguments, DRcom):
 
     sleep_timer = 60*60*24*2  # sleep for 2 days
 
-
     while sleep_timer > 0:
         # send outside comm every 10 minutes
-        time.sleep(60*5) # sleep 5 minutes
+        time.sleep(60 * 5) # sleep 5 minutes
 
         process.stdin.write((outsideComm.encode()))
         process.stdin.flush()
 
-        time.sleep(60*5) # sleep 5 minutes
+        time.sleep(60 * 5) # sleep 5 minutes
 
         process.stdin.write((arg[0].encode()))
         process.stdin.flush()
 
-        sleep_timer -= 60*10 # reduce time by 10 minutes for 2 days
+        sleep_timer -= 60 * 10 # reduce time by 10 minutes for 2 days
 
 
     update_csv(input_file, output_file, last_line) # create csv output file
@@ -112,5 +140,7 @@ for arg,com in zip(arguments, DRcom):
 
     end_service() # loop through DR commands until DONE
 
-print(volume+' gallon '+wh_type+' Baseline, Shed, Critical Peak Event,'
-        '\n Grid Emergency DONE. Run LoadUp command to complete testing.')
+print('Testing completed for the following events:')
+print(wh_type + volume)
+for com in DRcom:
+    print(com[0])
