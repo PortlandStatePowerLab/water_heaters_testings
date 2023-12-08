@@ -34,6 +34,11 @@ if ge in yes:
     arguments.append(['g\n'])
     DRcom.append(['GridEmergency'])
 
+lu = input('do you want to test LoadUp (y/n)?')
+if lu in yes:
+    arguments.append(['l\n'])
+    DRcom.append(['LoadUp'])
+
 
 print('Testing for the following:')
 for com in DRcom:
