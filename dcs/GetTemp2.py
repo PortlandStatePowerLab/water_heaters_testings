@@ -34,6 +34,13 @@ def write_to_csv(file_name, temp_data):
             csv_writer.writerow(['Timestamp', 'Temperature 1', 'Temperature 2'])
         csv_writer.writerow(temp_data)
 
+
+if not os.path.exists('templog'):
+    os.makedirs('templog')
+
+
+
+
 if __name__ == "__main__":
     # Specify the 1-wire devices
     device_id_1 = "28-000008e51dca"  # WH1 ambient temp device ID
