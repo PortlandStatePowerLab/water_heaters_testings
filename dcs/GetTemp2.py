@@ -31,7 +31,7 @@ def write_to_csv(file_name, temp_data):
     with open(file_path, 'a', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         if csvfile.tell() == 0:
-            csv_writer.writerow(['Timestamp', 'Temperature 1', 'Temperature 2'])
+            csv_writer.writerow(['Timestamp', 'WH AMBIENT', 'COLD WATER INLET'])
         csv_writer.writerow(temp_data)
 
 
@@ -76,6 +76,6 @@ if __name__ == "__main__":
 
             temp_data = [timestamp_1.strftime("%Y-%m-%d %H:%M:%S"), temperature_1, temperature_2]
 
-            print(f"Temperature 1: {temperature_1} F | Temperature 2: {temperature_2} F")
+            print(f"WH AMBIENT: {temperature_1} F | COLD WATER: {temperature_2} F")
 
             write_to_csv(data_name, temp_data)
