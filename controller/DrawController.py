@@ -34,7 +34,7 @@ def draw_water(targetVol):
             volume = float(numPulses) / 476    #Calculate volume
         run_time = time()
         elapsed_time = run_time - start_time
-        if elapsed_time > 60*10: # timeout 10 minutes
+        if elapsed_time > 180:
             print('Timeout Error.')
             break
     GPIO.output(VPIN, GPIO.LOW) #close valve
@@ -42,17 +42,27 @@ def draw_water(targetVol):
 
 thread_draw = Thread(target = draw_water, args = [0])
 
+print('1. Daily draw schedule (Dana)')
+print('2. Cold water dump, peripheral (Dana)\n')
+file = input('Which draw profile would you like to run?')
+
+if file == '1':
+    filename = 'drawschedule.csv'
+    print('Running drawschedule.csv')
+elif file == '2':
+    filename = 'colddraw.csv'
+    print('Running colddraw.csv')
+else:
+    print('Invalid entry')
+
 times = []
 volumes = []
-file = open('schedule.csv')
+file = open(filename)
 read = csv.reader(file)
 for row in read:
     times.append(row[0])
     volumes.append(row[1])
 file.close()
-
-print('Starting 24 Hour Scheduled Draw.  '+str(datetime.now()))
-print('\nWaiting for draw...')
 
 #Enter main program loop
 while True:
