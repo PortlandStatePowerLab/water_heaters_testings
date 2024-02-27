@@ -4,6 +4,11 @@
 - ```sudo modprobe w1-gpio```
 - ```sudomodprobe w1-therm```
 
+- Check if GPIO-4 and GPIO-21 are enabled
+- ```sudo nano /boot/config.txt```
+- ```dtoverlay=w1-gpio,gpiopin=4```
+- ```dtoverlay=w1-gpio,gpiopin=21```
+
 - Check to see if sensor devices are added:
 - ```cd /sys/bus/w1/devices```
 - ```ls```
