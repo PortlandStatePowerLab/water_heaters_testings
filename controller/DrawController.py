@@ -9,6 +9,7 @@ from time import time, sleep
 from threading import Thread
 import os
 import csv
+import sys
 
 #Initialize GPIO
 GPIO.setwarnings(False)
@@ -42,18 +43,41 @@ def draw_water(targetVol):
 
 thread_draw = Thread(target = draw_water, args = [0])
 
-print('1. Daily draw schedule (Dana)')
-print('2. Cold water dump, peripheral (Dana)\n')
-file = input('Which draw profile would you like to run?')
+#print('1. Daily draw schedule (Dana)')
+#print('2. Cold water dump, peripheral (Dana)\n')
+#print('3. Test program (Dana)')
+#file = input('Which draw profile would you like to run?')
 
-if file == '1':
+#if file == '1':
+#    filename = 'drawschedule.csv'
+#    print('Running drawschedule.csv')
+#elif file == '2':
+#    filename = 'colddraw.csv'
+#    print('Running colddraw.csv')
+#elif file == '3':
+#    filename = 'testprogram.csv'
+#    print('Running testprogram.csv')
+#else:
+#    print('Invalid entry')
+
+if len(sys.argv) != 2 or sys.argv[1] not in ['1', '2', '3']:
+    print('Usage: python DrawController.py [1 or 2 or 3]')
+    sys.exit(1)
+
+# Set the filename based on the command-line argument
+if sys.argv[1] == '1':
     filename = 'drawschedule.csv'
     print('Running drawschedule.csv')
-elif file == '2':
+elif sys.argv[1] == '2':
     filename = 'colddraw.csv'
     print('Running colddraw.csv')
+elif sys.argv[1] == '3':
+    filename = 'testprogram.csv'
+    print('Running testprogram.csv')
 else:
     print('Invalid entry')
+
+
 
 times = []
 volumes = []
