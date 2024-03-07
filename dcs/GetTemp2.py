@@ -3,28 +3,34 @@ import time
 import datetime
 import csv
 
-def read_temp(device_path, decimals=1, sleeptime=1):
+def read_temp(device_path, decimals=1, sleeptime=30):
     while True:
         try:
             timepoint = datetime.datetime.now()
             with open(device_path, "r") as f:
                 lines = f.readlines()
-            while lines[0].strip()[-3:] != "YES":
+
+            # Check if lines is not empty and contains the expected line
+            while not lines or lines[0].strip()[-3:] != "YES":
                 time.sleep(0.2)
                 with open(device_path, "r") as f:
                     lines = f.readlines()
+
             timepassed = (datetime.datetime.now() - timepoint).total_seconds()
             equals_pos = lines[1].find("t=")
+            
+            # Check if equals_pos is not -1 before proceeding
             if equals_pos != -1:
                 temp_string = lines[1][equals_pos + 2:]
                 temp = round(float(temp_string) / 1000.0, decimals)
                 temp = round(9 / 5 * temp + 32, 3)
-#                print(time.strftime("%H:%M:%S - ") + str(temp) + " F", end=' | ')
+                
                 time.sleep(sleeptime - timepassed)
                 timepoint = datetime.datetime.now()
                 return timepoint, temp
         except KeyboardInterrupt:
             break
+
 
 def write_to_csv(file_name, temp_data):
     file_path = os.path.join("templog", file_name)
@@ -39,11 +45,9 @@ if not os.path.exists('templog'):
     os.makedirs('templog')
 
 
-
-
 if __name__ == "__main__":
     # Specify the 1-wire devices
-    device_id_1 = "28-000008e51dca"  # WH1 ambient temp device ID
+    device_id_1 = "28-000008e5e92c"  # WH1 ambient temp device ID
     device_id_2 = "28-0416c138deff"  # Cold Water temp device ID
 
     device_path_1 = f"/sys/bus/w1/devices/{device_id_1}/w1_slave"
@@ -66,8 +70,10 @@ if __name__ == "__main__":
 
         time.sleep(delay)
 
-    for com in ['Baseline', 'Shed', 'CriticalPeakEvent', 'GridEmergency']:
-        data_name = f"{wh_type}{volume}_TEMPDATA_{com}.csv"
+    DRcom = [['CriticalPeakEvent'], ['GridEmergency']]
+
+    for com in DRcom:
+        data_name = wh_type + volume + '_TEMPDATA_' + com[0] + '.csv'
 
         start_time = time.time()
         while time.time() - start_time < 60*60*24*2:  # Stay in the loop for 2 days
@@ -76,6 +82,10 @@ if __name__ == "__main__":
 
             temp_data = [timestamp_1.strftime("%Y-%m-%d %H:%M:%S"), temperature_1, temperature_2]
 
-            print(f"WH AMBIENT: {temperature_1} F | COLD WATER: {temperature_2} F")
+            current_time = datetime.datetime.now()
+
+            formatted_time = current_time.strftime("%H:%M:%S")
+
+            print(f"{formatted_time} | WH AMBIENT: {temperature_1} F | COLD WATER: {temperature_2} F")
 
             write_to_csv(data_name, temp_data)
