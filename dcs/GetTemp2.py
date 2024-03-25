@@ -46,8 +46,9 @@ if not os.path.exists('templog'):
 
 
 if __name__ == "__main__":
-    # Specify the 1-wire devices
-    device_id_1 = "28-000008e5e92c"  # WH1 ambient temp device ID
+    
+
+    device_id_1 = "28-000008e55d0d"  # WH1 ambient temp device ID
     device_id_2 = "28-0416c138deff"  # Cold Water temp device ID
 
     device_path_1 = f"/sys/bus/w1/devices/{device_id_1}/w1_slave"
@@ -70,7 +71,7 @@ if __name__ == "__main__":
 
         time.sleep(delay)
 
-    DRcom = [['CriticalPeakEvent'], ['GridEmergency']]
+    DRcom = [['GridEmergency']]
 
     for com in DRcom:
         data_name = wh_type + volume + '_TEMPDATA_' + com[0] + '.csv'
