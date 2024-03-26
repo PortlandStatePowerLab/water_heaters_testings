@@ -48,17 +48,22 @@ if not os.path.exists('templog'):
 if __name__ == "__main__":
     
 
+    WH_1 = "28-00043d6393ff"
+    WH_2 = "28-000008e55d0d"
+    WH_3 = "A"
+    WH_4 = "B"
+
     device_id_1 = "28-000008e55d0d"  # WH_ALL ambient temp device ID
     device_id_2 = "28-0416c138deff"  # Cold Water temp device ID
-    device_id_3 = "28-00043ca024ff"  # WH Hot temp device ID **UNIQUE TO EACH WH**
-    # WH_1 28-00043ca024ff
-    # WH_2 
-    # WH_3
-    # WH_4
+    device_id_3 = WH_1  # WH Hot temp device ID **UNIQUE TO EACH WH**
+
+
+
+
 
     device_path_1 = f"/sys/bus/w1/devices/{device_id_1}/w1_slave"
     device_path_2 = f"/sys/bus/w1/devices/{device_id_2}/w1_slave"
-    device_path_3 = f"/sys/bus/w1/devies/{device_id_3}/w1_slave"
+    device_path_3 = f"/sys/bus/w1/devices/{device_id_3}/w1_slave"
 
     wh_type = input('WH Brand:')
     volume = input('Capacity (gallons):')
