@@ -37,7 +37,7 @@ def write_to_csv(file_name, temp_data):
     with open(file_path, 'a', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         if csvfile.tell() == 0:
-            csv_writer.writerow(['Timestamp', 'WH AMBIENT', 'COLD WATER INLET'])
+            csv_writer.writerow(['Timestamp', 'AMBIENT', 'COLD WATER', 'HOT WATER'])
         csv_writer.writerow(temp_data)
 
 
@@ -48,11 +48,17 @@ if not os.path.exists('templog'):
 if __name__ == "__main__":
     
 
-    device_id_1 = "28-000008e55d0d"  # WH1 ambient temp device ID
+    device_id_1 = "28-000008e55d0d"  # WH_ALL ambient temp device ID
     device_id_2 = "28-0416c138deff"  # Cold Water temp device ID
+    device_id_3 = "28-00043ca024ff"  # WH Hot temp device ID **UNIQUE TO EACH WH**
+    # WH_1 28-00043ca024ff
+    # WH_2 
+    # WH_3
+    # WH_4
 
     device_path_1 = f"/sys/bus/w1/devices/{device_id_1}/w1_slave"
     device_path_2 = f"/sys/bus/w1/devices/{device_id_2}/w1_slave"
+    device_path_3 = f"/sys/bus/w1/devies/{device_id_3}/w1_slave"
 
     wh_type = input('WH Brand:')
     volume = input('Capacity (gallons):')
@@ -80,13 +86,14 @@ if __name__ == "__main__":
         while time.time() - start_time < 60*60*24*2:  # Stay in the loop for 2 days
             timestamp_1, temperature_1 = read_temp(device_path_1)
             timestamp_2, temperature_2 = read_temp(device_path_2)
+            timestamp_3, temperature_3 = read_temp(device_path_3)
 
-            temp_data = [timestamp_1.strftime("%Y-%m-%d %H:%M:%S"), temperature_1, temperature_2]
+            temp_data = [timestamp_1.strftime("%Y-%m-%d %H:%M:%S"), temperature_1, temperature_2, temperature_3]
 
             current_time = datetime.datetime.now()
 
             formatted_time = current_time.strftime("%H:%M:%S")
 
-            print(f"{formatted_time} | WH AMBIENT: {temperature_1} F | COLD WATER: {temperature_2} F")
+            print(f"{formatted_time} | AMBIENT: {temperature_1} F | COLD: {temperature_2} F | HOT: {temperature_3} F")
 
             write_to_csv(data_name, temp_data)
