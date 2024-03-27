@@ -50,8 +50,8 @@ if __name__ == "__main__":
 
     WH_1 = "28-00043d6393ff"
     WH_2 = "28-000008e55d0d"
-    WH_3 = "A"
-    WH_4 = "B"
+    WH_3 = "28-00043d6037ff"
+    WH_4 = "28-00043ca043ff"
 
     device_id_1 = "28-000008e55d0d"  # WH_ALL ambient temp device ID
     device_id_2 = "28-0416c138deff"  # Cold Water temp device ID
