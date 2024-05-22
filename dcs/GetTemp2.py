@@ -57,10 +57,6 @@ if __name__ == "__main__":
     device_id_2 = "28-0416c138deff"  # Cold Water temp device ID
     device_id_3 = WH_1  # WH Hot temp device ID **UNIQUE TO EACH WH**
 
-
-
-
-
     device_path_1 = f"/sys/bus/w1/devices/{device_id_1}/w1_slave"
     device_path_2 = f"/sys/bus/w1/devices/{device_id_2}/w1_slave"
     device_path_3 = f"/sys/bus/w1/devices/{device_id_3}/w1_slave"
