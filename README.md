@@ -45,6 +45,18 @@ Check the serial port connections.
 - Test Bench --> serial0 should be pointing to USB0
 
 
-### TODO:
-Upgrade scripts so it is cmopatible with Python3
+### Conformance Test Procedure
+Three scripts need to run simultaneously to collect all necessary data
+for Conformance testing. Conformance testing runs for 48 hours. 
+The following are the three scripts and run procedures:
+- Commodity Service
+    - Conformance commodity service initiates data collection for any desired mode.
+      At the start of the program, you will enter the WH Brand (if it is a HP, write
+      HP after brand name), tank volume, and which service you would like to run for
+      48 hours each. The data will be collected in the log.csv file as long as it
+      is running.
+      ```cd water_heaters_testings/dcs/build/debug```
+      ```python3 StartCommodity.py```
+- Draw Profile
+- Temperature Sensors
 
