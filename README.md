@@ -34,8 +34,11 @@ The following are the three scripts and run procedures:
       separate windows to run the three programs.
 
       - ```tmux```
+  
       -ctrl+b, %
+  
       -ctrl+b, "
+  
       - To move from window to window: cntrol+b, <up> or <down> or <left> or <right>
       - To close out tmux: ctrl+b, :kill-session
   
@@ -69,6 +72,7 @@ The following are the three scripts and run procedures:
     to collect all three. The temperature data will be saved to the templog directory.
 
     -```cd water_heaters_testings/dcs```
+  
     -```python3 GetTemp.py```
 
 
