@@ -50,6 +50,7 @@ void perform_command(char cmd, shared_ptr<ICEA2045DeviceUCM> dev){
             cout<<"critical peak event"<<endl;
 	    dev->basicCriticalPeakEvent(0);
             break;
+
         default:
             break;
     }
@@ -97,6 +98,7 @@ void commodity_service_loop(shared_ptr<ICEA2045DeviceUCM> dev){
 	file.close();
 	// ------------------------------ end of scheduler ----------------------
 	// send routine commands (commodity read & op status)
+	// dev->intermediateGetDeviceInformation().get();
 	dev->intermediateGetCommodity().get();
         dev->basicQueryOperationalState().get();
         sleep(60);
@@ -131,8 +133,6 @@ int main()
     thread commodity(commodity_service_loop,device);
     commodity.detach();
     sleep(5);
-
-
 	while (!shutdown)
 	{
         cout<<"c- CriticalPeakEvent\n";
@@ -190,4 +190,6 @@ int main()
 	//delete (device);
 
 	return 0;
+
+
 }
