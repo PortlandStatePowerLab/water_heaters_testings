@@ -34,11 +34,8 @@ The following are the three scripts and run procedures:
       separate windows to run the three programs.
 
       - ```tmux```
-  
       -ctrl+b, %
-  
       -ctrl+b, "
-  
       - To move from window to window: cntrol+b, <up> or <down> or <left> or <right>
       - To close out tmux: ctrl+b, :kill-session
   
@@ -74,6 +71,9 @@ The following are the three scripts and run procedures:
     -```cd water_heaters_testings/dcs```
   
     -```python3 GetTemp.py```
+
+- Plot and Analyze - Use newly created commody read log files to plot and analyze results
+In the testlog directory are CSV files for each event. 
 
 
 ### If the heartbeat is not working on the DCM or the testbench RPI:
