@@ -37,7 +37,9 @@ The following are the three scripts and run procedures:
       is running.
       
       -```cd water_heaters_testings/dcs/build/debug```
+      
       -```python3 StartCommodity.py```
+      
 - Draw Profile - Running a 24-hr draw schedule for each service
     - The draw profile is used to run scheduled water draws by reading CSV files
       The draw controller program has three inputs for draw schedules:
@@ -45,8 +47,11 @@ The following are the three scripts and run procedures:
           -Cold water dump, peripheral (Use this one to initialize the cold water
           temperature for an auxiliary WH)
           - Test program (create a sample CSV file to ensure all programs are functioning)
+      
       -```cd water_heaters_testings_/controller```
+      
       -```./StartDrawSchedule.sh```
+      
       - Choose which profile you would like to run. 
 - Temperature Sensors
 
