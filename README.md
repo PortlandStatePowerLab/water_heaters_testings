@@ -35,6 +35,7 @@ The following are the three scripts and run procedures:
       HP after brand name), tank volume, and which service you would like to run for
       48 hours each. The data will be collected in the log.csv file as long as it
       is running.
+      
       -```cd water_heaters_testings/dcs/build/debug```
       -```python3 StartCommodity.py```
 - Draw Profile - Running a 24-hr draw schedule for each service
