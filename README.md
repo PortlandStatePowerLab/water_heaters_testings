@@ -47,6 +47,7 @@ The following are the three scripts and run procedures:
     is running.
       
       -```cd water_heaters_testings/dcs/build/debug```
+      
       -```python3 StartCommodity.py```
       
 - Draw Profile - Running a 24-hr draw schedule for each service
@@ -58,11 +59,17 @@ The following are the three scripts and run procedures:
       - Test program (create a sample CSV file to ensure all programs are functioning)
       
       -```cd water_heaters_testings_/controller```
+      
       -```./StartDrawSchedule.sh```
       
       - Choose which profile you would like to run.
 
-- Temperature Sensors - 
+- Temperature Sensors - Collecting ambient, cold water, and hot water temperatures
+    - Three temperatures are collected. You will need to run one temperature script
+    to collect all three. The temperature data will be saved to the templog directory.
+
+    -```cd water_heaters_testings/dcs```
+    -```python3 GetTemp.py```
 
 
 ### If the heartbeat is not working on the DCM or the testbench RPI:
