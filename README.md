@@ -29,6 +29,15 @@ for Conformance testing. Conformance testing runs for 48 hours. The first
 There are 
 
 The following are the three scripts and run procedures:
+- TMUX - running programs from one terminal
+      - On the RPI Desktop, open a window and run TMUX. You will need to create three
+      separate windows to run the three programs.
+
+      - ```tmux```
+      -ctrl+b, %
+      -ctrl+b, "
+      - To move from window to window: cntrol+b, <up> or <down> or <left> or <right>
+      - To close out tmux: ctrl+b, :kill-session
 - Commodity Service - Collecting WH data from the commodity read
     - Conformance commodity service initiates data collection for any desired mode.
       At the start of the program, you will enter the WH Brand (if it is a HP, write
@@ -52,8 +61,9 @@ The following are the three scripts and run procedures:
       
       -```./StartDrawSchedule.sh```
       
-      - Choose which profile you would like to run. 
-- Temperature Sensors
+      - Choose which profile you would like to run.
+
+- Temperature Sensors - 
 
 
 ### If the heartbeat is not working on the DCM or the testbench RPI:
@@ -61,7 +71,9 @@ Check the serial port connections.
 - DCM --> serial0 should be pointing to AMA0
   - If there is still an issue, make sure the RPI README. In particular,
   make sure to read through the following:
+
     -```https://github.com/rcdrones/UPSPACK_V3/blob/master/README_en.md```
+    
 - Test Bench --> serial0 should be pointing to USB0
 
 
