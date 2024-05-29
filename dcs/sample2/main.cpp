@@ -20,7 +20,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <wiringPi.h>
-#include <time.h>
 
 using namespace cea2045;
 
@@ -28,76 +27,11 @@ INITIALIZE_EASYLOGGINGPP
 
 #include <cea2045/util/MSTimer.h>
 
-void perform_command(char cmd, shared_ptr<ICEA2045DeviceUCM> dev){
-    switch (tolower(cmd)){
-        case 's':
-            cout<<"shedding"<<endl;
-	    dev->basicShed(0);
-            break;
-        case 'e':
-	    dev->basicEndShed(0);
-            cout<<"endshedding"<<endl;
-            break;
-        case 'l':
-            cout<<"loading up"<<endl;
-	    dev->basicLoadUp(0);
-            break;
-        case 'g':
-            cout<<"grid emergency"<<endl;
-	    dev->basicGridEmergency(0);
-            break;
-        case 'c':
-            cout<<"critical peak event"<<endl;
-	    dev->basicCriticalPeakEvent(0);
-            break;
-        default:
-            break;
-    }
-    return;
-}
-
 
 void commodity_service_loop(shared_ptr<ICEA2045DeviceUCM> dev){
-    fstream file;
-    int t;
-    time_t now;
-    char cmd,comma;
-    string header,lines;
-    while (1)
-    {
-	file.open("schedule.csv", ofstream::in);
-	if (!file.is_open())
-		cout<<"FAILED TO OPEN SCHEDULE.CSV"<<endl;
-	// prime the buffer -- skip the header
-	getline(file,header);
-	lines = header+ "\n";
-	while (file>>t>>comma>>cmd)
-	{
-		// grab time
-		time(&now);
-		if (now >= t)
-		{
-		    // passed & should act on it
-		    cout<<t<<comma<<cmd<<" (PASSED!)\n";
-		    perform_command(cmd,dev);
-		}
-		else
-		{
-		    // did not pass, leave it be for the future
-		    cout<<t<<cmd<<" (STILL!)\n";
-		    lines+= to_string(t) + comma + cmd + "\n";
-		}
-	}
-	file.close();
-	file.open("schedule.csv",ofstream::out);
-	if (!file.is_open())
-		cout<<"FAILED TO OPEN SCHEDULE.CSV"<<endl;
-	// rewrite the commands
-	file << lines<<endl;
-	file.close();
-	// ------------------------------ end of scheduler ----------------------
-	// send routine commands (commodity read & op status)
-	dev->intermediateGetCommodity().get();
+    //ICEA2045DeviceUCM* dev = device;
+    while (1){
+        dev->intermediateGetCommodity().get();
         dev->basicQueryOperationalState().get();
         sleep(60);
     }
