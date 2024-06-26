@@ -77,7 +77,11 @@ The following are the three scripts and run procedures:
 
 
 ### If the heartbeat is not working on the DCM or the testbench RPI:
-Check the serial port connections.
+Check the serial port connections. You can change where serial0 is pointing by
+going to the main.cpp file in water_heaters_testings/dcs/sample2/sample2/main.cpp
+If you update this pointer, you will need to recompile from the dcs repo again and recreate
+and make the build/debug directories.
+
 - DCM --> serial0 should be pointing to AMA0
   - If there is still an issue, make sure the RPI README. In particular,
   make sure to read through the following:
