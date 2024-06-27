@@ -18,6 +18,7 @@ NOTE: The water draw scripts are compatible with Python2.
     - ```WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!```
     - Use the following ssh line to remove the offending key:
     - ```ssh-keygen -R <RPI ip address>```
+    - You should be able to log in without issue after entering this line.
 
 ### Conformance Test Procedure
 NOTE: The following scripts will run from three windows via TMUX.
