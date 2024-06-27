@@ -1,9 +1,8 @@
 ## Current Water Heaters Installed:
-- A. O. Smith EWH
-- A. O Smith HPWH
-- American Standard EWHs
-## Soon to be installed:
-- Rheem EWHs.
+- WH 1: State HPWH
+- WH 2: Rheem HPWH
+- WH 3: AO Smith HPWH 2
+- WH 4: AO Smith HPWH 1
 ### Requirements:
 NOTE: The water draw scripts are compatible with Python2.
 
@@ -15,6 +14,10 @@ NOTE: The water draw scripts are compatible with Python2.
     - ``` wget https://project-downloads.drogon.net/wiringpi-latest.deb```
     - ``` sudo dpkg -i wiringpi-latest.deb```
 
+- If you get a warning that looks like...
+    - ```WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!```
+    - Use the following ssh line to remove the offending key:
+    - ```ssh-keygen -R <RPI ip address>
 
 ### Conformance Test Procedure
 NOTE: The following scripts will run from three windows via TMUX.
