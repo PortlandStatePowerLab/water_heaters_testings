@@ -40,11 +40,11 @@ wait $PID
 
 i=4
 while [ $i -gt 0 ]; do
-    python3 DrawController.py "$user_choice" &
+    python3 DrawController_Conformance.py "$user_choice" &
     sleep 86400 &
     PID=$!
     wait $PID
-    pkill -f DrawController.py
+    pkill -f DrawController_Conformance.py
     printf '\n\nTurning off Draw Controller for 24 Hr   '
     date
     printf '\n\n'
