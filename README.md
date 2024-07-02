@@ -1,8 +1,8 @@
 ## Current Water Heaters Installed:
 - WH 1: State HPWH
 - WH 2: Rheem HPWH
-- WH 3: AO Smith HPWH 2
-- WH 4: AO Smith HPWH 1
+- WH 3: AO Smith 2 HPWH
+- WH 4: AO Smith 1 HPWH
 ### Requirements:
 NOTE: The water draw scripts are compatible with Python2.
 
