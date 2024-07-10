@@ -15,7 +15,7 @@ using namespace std;
 float mcp3008::GetCurrent(){
         float voltage = float(analogRead(channel_)) / 1023 * 4.4; // 4.4 is Vref
         float current = voltage * 10; // factor dependent on CT setting
-        cout << "\nVoltage check: " << voltage << endl; # prints out voltage value from CT
-        cout << "\nCurrent check: " << current << endl; # prints out current from CT
+        cout << "\nVoltage check: " << voltage << endl; // prints out voltage value from CT
+        cout << "\nCurrent check: " << current << endl; // prints out current from CT
         return current;
 };
