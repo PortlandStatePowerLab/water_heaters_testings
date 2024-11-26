@@ -114,6 +114,7 @@
 #include "message/SetTemperatureOffset.h"
 #include "message/StartCycling.h"
 #include "message/TerminateCycling.h"
+#include "message/SetAdvancedLoadUp.h"
 
 namespace cea2045 {
 
@@ -130,6 +131,11 @@ public:
 	std::future<ResponseCodes> intermediateGetTemperatureOffset();
 	std::future<ResponseCodes> intermediateGetSetPoint();
 	std::future<ResponseCodes> intermediateGetPresentTemperature();
+	std::future<ResponseCodes> intermediateGetAdvancedLoadUp();
+
+
+	std::future<ResponseCodes> intermediateSetAdvancedLoadUp(unsigned char eventDuration, unsigned short value, unsigned short unit);
+	
 
 	std::future<ResponseCodes> intermediateSetTemperatureOffset(unsigned char temperatureOffset, TemperatureUnits units);
 	std::future<ResponseCodes> intermediateSetSetpoints(unsigned short deviceType, TemperatureUnits units, unsigned short setpoint1, unsigned short setpoint2);

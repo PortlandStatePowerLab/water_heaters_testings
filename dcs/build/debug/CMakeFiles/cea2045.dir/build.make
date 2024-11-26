@@ -53,10 +53,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/local/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -219,9 +219,22 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp -o CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.s
 
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: CMakeFiles/cea2045.dir/flags.make
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp
+
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp > CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.i
+
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp -o CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.s
+
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o: ../../cea2045/cea2045/device/message/SetEnergyPrice.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetEnergyPrice.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.i: cmake_force
@@ -234,7 +247,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.s: cmak
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.o: ../../cea2045/cea2045/device/message/SetSetpoints.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetSetpoints.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.i: cmake_force
@@ -247,7 +260,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.s: cmake_
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.o: ../../cea2045/cea2045/device/message/SetTemperatureOffset.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetTemperatureOffset.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.i: cmake_force
@@ -260,7 +273,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.s
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/StartCycling.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/StartCycling.cpp.o: ../../cea2045/cea2045/device/message/StartCycling.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/StartCycling.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/StartCycling.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/StartCycling.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/StartCycling.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/StartCycling.cpp.i: cmake_force
@@ -273,7 +286,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/StartCycling.cpp.s: cmake_
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/TerminateCycling.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/TerminateCycling.cpp.o: ../../cea2045/cea2045/device/message/TerminateCycling.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/TerminateCycling.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/TerminateCycling.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/TerminateCycling.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/TerminateCycling.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/TerminateCycling.cpp.i: cmake_force
@@ -286,7 +299,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/TerminateCycling.cpp.s: cm
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp.o: ../../cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp.i: cmake_force
@@ -299,7 +312,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ILinkLayerCommRecv.cpp.s: cmake
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp.o: ../../cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp.i: cmake_force
@@ -312,7 +325,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/LinkLayerCommImpl.cpp.s: cmake_
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ReceiveBuffer.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ReceiveBuffer.cpp.o: ../../cea2045/cea2045/linklayer/ReceiveBuffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ReceiveBuffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ReceiveBuffer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ReceiveBuffer.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/linklayer/ReceiveBuffer.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ReceiveBuffer.cpp.i: cmake_force
@@ -325,7 +338,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/linklayer/ReceiveBuffer.cpp.s: cmake_forc
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/message/ConvertEnums.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/message/ConvertEnums.cpp.o: ../../cea2045/cea2045/message/ConvertEnums.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/message/ConvertEnums.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/message/ConvertEnums.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/message/ConvertEnums.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/ConvertEnums.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/message/ConvertEnums.cpp.i: cmake_force
@@ -338,7 +351,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/message/ConvertEnums.cpp.s: cmake_force
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp.o: ../../cea2045/cea2045/processmessage/ProcessMessageSGD.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp.i: cmake_force
@@ -351,7 +364,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp.s: c
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: ../../cea2045/cea2045/processmessage/ProcessMessageUCM.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.i: cmake_force
@@ -364,7 +377,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.s: c
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/CEA2045Time.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/CEA2045Time.cpp.o: ../../cea2045/cea2045/util/CEA2045Time.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/util/CEA2045Time.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/util/CEA2045Time.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/util/CEA2045Time.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/util/CEA2045Time.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/CEA2045Time.cpp.i: cmake_force
@@ -377,7 +390,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/util/CEA2045Time.cpp.s: cmake_force
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/Checksum.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/Checksum.cpp.o: ../../cea2045/cea2045/util/Checksum.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/util/Checksum.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/util/Checksum.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/util/Checksum.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/util/Checksum.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/Checksum.cpp.i: cmake_force
@@ -390,7 +403,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/util/Checksum.cpp.s: cmake_force
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/MSTimer.cpp.o: CMakeFiles/cea2045.dir/flags.make
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/MSTimer.cpp.o: ../../cea2045/cea2045/util/MSTimer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/util/MSTimer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/cea2045.dir/cea2045/cea2045/util/MSTimer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cea2045.dir/cea2045/cea2045/util/MSTimer.cpp.o -c /home/pi/water_heaters_testings/dcs/cea2045/cea2045/util/MSTimer.cpp
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/util/MSTimer.cpp.i: cmake_force
@@ -414,6 +427,7 @@ cea2045_OBJECTS = \
 "CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/Message.cpp.o" \
 "CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMaxPayload.cpp.o" \
 "CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.o" \
+"CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o" \
 "CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o" \
 "CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.o" \
 "CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.o" \
@@ -443,6 +457,7 @@ libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/Intermediat
 libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/Message.cpp.o
 libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMaxPayload.cpp.o
 libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.o
+libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o
 libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o
 libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetSetpoints.cpp.o
 libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetTemperatureOffset.cpp.o
@@ -459,7 +474,7 @@ libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/util/Checksum.cpp.o
 libcea2045.so: CMakeFiles/cea2045.dir/cea2045/cea2045/util/MSTimer.cpp.o
 libcea2045.so: CMakeFiles/cea2045.dir/build.make
 libcea2045.so: CMakeFiles/cea2045.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX shared library libcea2045.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking CXX shared library libcea2045.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cea2045.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

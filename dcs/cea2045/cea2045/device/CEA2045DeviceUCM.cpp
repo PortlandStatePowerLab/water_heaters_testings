@@ -149,6 +149,15 @@ std::future<ResponseCodes> CEA2045DeviceUCM::intermediateGetSetPoint()
 {
 	return queueRequest(new Intermediate(MessageCode::GET_SETPOINTS_REQUEST,
 			GET_SET, TEMP_SETPOINT));
+
+}
+
+//======================================================================================
+
+std::future<ResponseCodes> CEA2045DeviceUCM::intermediateGetAdvancedLoadUp()
+{
+	return queueRequest(new Intermediate(MessageCode::GET_ADVANCEDLOADUP_REQUEST,
+			ADVANCED_LOADUP, CLEAR_OP_CODE2));
 }
 
 //======================================================================================
@@ -171,6 +180,14 @@ std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetTemperatureOffset(un
 std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetSetpoints(unsigned short deviceType, TemperatureUnits units, unsigned short setpoint1, unsigned short setpoint2)
 {
 	return queueRequest(new SetSetpoints(deviceType, units, setpoint1, setpoint2));
+}
+
+//======================================================================================
+
+
+std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetAdvancedLoadUp(unsigned char eventDuration, unsigned short value, unsigned short unit)
+{
+	return queueRequest(new SetAdvancedLoadUp(eventDuration, value, unit));
 }
 
 //======================================================================================

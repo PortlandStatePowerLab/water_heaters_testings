@@ -344,6 +344,30 @@ void ProcessMessageUCM::processIntermediateMessage(ILinkLayerCommSend *linkLayer
 			break;
 		}
 
+
+			case IntermediateTypeCode::GET_SET_ADVANCEDLOADUP_RESPONSE:
+		{
+			if (message->getLength() + 6 == sizeof(cea2045IntermediateResponse))
+			{
+				cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
+
+				m_ucm->processSetAdvancedLoadUpResponse(intermediateResponse);
+
+				linkLayer->sendLinkLayerAck();
+			}
+			else if (message->getLength() + 6 == sizeof(cea2045GetAdvancedLoadUpResponse))
+			{
+				cea2045GetAdvancedLoadUpResponse *AdvancedLoadUpResponse = (cea2045GetAdvancedLoadUpResponse *)message;
+
+				m_ucm->processGetAdvancedLoadUpResponse(AdvancedLoadUpResponse);
+
+				linkLayer->sendLinkLayerAck();
+			}
+
+			break;
+		}
+
+
 		case IntermediateTypeCode::GET_PRESENT_TEMPERATURE_RESPONSE:
 		{
 			cea2045GetPresentTemperatureResponse *getPresentTemperature = (cea2045GetPresentTemperatureResponse *)message;

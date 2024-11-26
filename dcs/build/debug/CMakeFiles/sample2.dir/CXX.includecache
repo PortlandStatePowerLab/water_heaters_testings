@@ -73,6 +73,8 @@ message/StartCycling.h
 ../../cea2045/cea2045/device/message/StartCycling.h
 message/TerminateCycling.h
 ../../cea2045/cea2045/device/message/TerminateCycling.h
+message/SetAdvancedLoadUp.h
+../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
 
 ../../cea2045/cea2045/device/DeviceFactory.h
 CEA2045DeviceUCM.h
@@ -127,6 +129,12 @@ future
 ../../cea2045/cea2045/device/message/QueryMessageTypeSupported.h
 ../../message/CEA2045MessageTypeSupported.h
 ../../cea2045/cea2045/message/CEA2045MessageTypeSupported.h
+../message/Message.h
+../../cea2045/cea2045/device/message/Message.h
+
+../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
+../../message/CEA2045MessageSetAdvancedLoadUpRequest.h
+../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
 ../message/Message.h
 ../../cea2045/cea2045/device/message/Message.h
 
@@ -212,6 +220,10 @@ CEA2045MessageMacros.h
 CEA2045MessageMacros.h
 ../../cea2045/cea2045/message/CEA2045MessageMacros.h
 
+../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
+CEA2045MessageMacros.h
+../../cea2045/cea2045/message/CEA2045MessageMacros.h
+
 ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CEA2045MessageMacros.h
 ../../cea2045/cea2045/message/CEA2045MessageMacros.h
@@ -241,6 +253,10 @@ endian.h
 -
 ../util/Checksum.h
 ../../cea2045/cea2045/util/Checksum.h
+
+../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
+CEA2045MessageMacros.h
+../../cea2045/cea2045/message/CEA2045MessageMacros.h
 
 ../../cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
 CEA2045MessageMacros.h
@@ -305,6 +321,8 @@ CEA2045MessageMacros.h
 ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 ../message/CEA2045MessageGetUTCTimeResponse.h
 ../../cea2045/cea2045/message/CEA2045MessageGetUTCTimeResponse.h
+../message/CEA2045MessageGetAdvancedLoadUpResponse.h
+../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 
 ../../cea2045/cea2045/util/Checksum.h
 

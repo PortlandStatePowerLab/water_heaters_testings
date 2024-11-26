@@ -42,6 +42,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/Message.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/QueryMaxPayload.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/QueryMessageTypeSupported.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetEnergyPrice.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetSetpoints.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetTemperatureOffset.h
@@ -56,6 +57,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageDataLink.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -63,6 +65,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageIntermediate.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageIntermediateResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageMacros.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetSetpointsRequest.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetTemperatureOffsetRequest.h
@@ -87,6 +90,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/Message.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/QueryMaxPayload.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/QueryMessageTypeSupported.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetEnergyPrice.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetSetpoints.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetTemperatureOffset.h
@@ -102,6 +106,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageDataLink.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -109,6 +114,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageIntermediate.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageIntermediateResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageMacros.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetSetpointsRequest.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetTemperatureOffsetRequest.h
@@ -166,6 +172,14 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/QueryMessageTypeSupported.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageMacros.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageTypeSupported.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/ConvertEnums.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/util/Checksum.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/Message.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageMacros.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/ConvertEnums.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/util/Checksum.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o
@@ -253,6 +267,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageDataLink.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+ /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
  /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h

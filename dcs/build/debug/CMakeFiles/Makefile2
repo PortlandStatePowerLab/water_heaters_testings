@@ -54,10 +54,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/local/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -97,12 +97,12 @@ clean: CMakeFiles/cea2045.dir/clean
 CMakeFiles/sample2.dir/all: CMakeFiles/cea2045.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sample2.dir/build.make CMakeFiles/sample2.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sample2.dir/build.make CMakeFiles/sample2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=27,28,29,30 "Built target sample2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=28,29,30,31 "Built target sample2"
 .PHONY : CMakeFiles/sample2.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/sample2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 30
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sample2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 0
 .PHONY : CMakeFiles/sample2.dir/rule
@@ -124,12 +124,12 @@ CMakeFiles/sample2.dir/clean:
 CMakeFiles/testcea2045.dir/all: CMakeFiles/cea2045.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testcea2045.dir/build.make CMakeFiles/testcea2045.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testcea2045.dir/build.make CMakeFiles/testcea2045.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=31,32,33,34,35,36,37,38,39,40,41,42,43,44 "Built target testcea2045"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=32,33,34,35,36,37,38,39,40,41,42,43,44,45 "Built target testcea2045"
 .PHONY : CMakeFiles/testcea2045.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/testcea2045.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 40
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 41
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testcea2045.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 0
 .PHONY : CMakeFiles/testcea2045.dir/rule
@@ -151,12 +151,12 @@ CMakeFiles/testcea2045.dir/clean:
 CMakeFiles/cea2045.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cea2045.dir/build.make CMakeFiles/cea2045.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cea2045.dir/build.make CMakeFiles/cea2045.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 "Built target cea2045"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 "Built target cea2045"
 .PHONY : CMakeFiles/cea2045.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cea2045.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 26
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cea2045.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles 0
 .PHONY : CMakeFiles/cea2045.dir/rule

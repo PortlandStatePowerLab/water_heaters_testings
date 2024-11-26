@@ -4,6 +4,7 @@
 CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageBasic.h
 CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -31,6 +32,7 @@ CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/device/
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/device/message/Message.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/device/message/QueryMaxPayload.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/device/message/QueryMessageTypeSupported.h
+CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/device/message/SetEnergyPrice.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/device/message/SetSetpoints.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/device/message/SetTemperatureOffset.h
@@ -45,6 +47,7 @@ CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDataLink.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -52,6 +55,7 @@ CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediate.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediateResponse.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageMacros.h
+CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetSetpointsRequest.h
 CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetTemperatureOffsetRequest.h

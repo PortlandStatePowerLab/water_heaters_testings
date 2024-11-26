@@ -43,6 +43,7 @@ CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cp
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/device/message/Message.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/device/message/QueryMaxPayload.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/device/message/QueryMessageTypeSupported.h
+CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/device/message/SetEnergyPrice.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/device/message/SetSetpoints.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/device/message/SetTemperatureOffset.h
@@ -55,6 +56,7 @@ CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cp
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDataLink.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -62,6 +64,7 @@ CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cp
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediate.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediateResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageMacros.h
+CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetSetpointsRequest.h
 CMakeFiles/testcea2045.dir/test/test/unit/cea2045device/CEA2045DeviceUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetTemperatureOffsetRequest.h
@@ -106,6 +109,7 @@ CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/device/message/Message.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/device/message/QueryMaxPayload.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/device/message/QueryMessageTypeSupported.h
+CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/device/message/SetEnergyPrice.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/device/message/SetSetpoints.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/device/message/SetTemperatureOffset.h
@@ -118,6 +122,7 @@ CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDataLink.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -125,6 +130,7 @@ CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediate.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediateResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageMacros.h
+CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetSetpointsRequest.h
 CMakeFiles/testcea2045.dir/test/test/unit/linklayer/LinkLayerUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetTemperatureOffsetRequest.h
@@ -178,6 +184,7 @@ CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDataLink.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -200,6 +207,7 @@ CMakeFiles/testcea2045.dir/test/test/unit/processmessage/ProcessMessageUnitTest.
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/UCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageBasic.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/UCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/UCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/testcea2045.dir/test/test/unit/processmessage/UCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/UCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/UCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/testcea2045.dir/test/test/unit/processmessage/UCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h

@@ -41,6 +41,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/device/message/Message.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/device/message/QueryMaxPayload.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/device/message/QueryMessageTypeSupported.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/device/message/SetEnergyPrice.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/device/message/SetSetpoints.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/device/message/SetTemperatureOffset.h
@@ -55,6 +56,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDataLink.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -62,6 +64,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediate.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediateResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageMacros.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetSetpointsRequest.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/CEA2045DeviceUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetTemperatureOffsetRequest.h
@@ -86,6 +89,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/device/message/Message.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/device/message/QueryMaxPayload.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/device/message/QueryMessageTypeSupported.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/device/message/SetEnergyPrice.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/device/message/SetSetpoints.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/device/message/SetTemperatureOffset.h
@@ -101,6 +105,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDataLink.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -108,6 +113,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediate.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageIntermediateResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageMacros.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetSetpointsRequest.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/DeviceFactory.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetTemperatureOffsetRequest.h
@@ -167,6 +173,14 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageTypeSupported.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.o: ../../cea2045/cea2045/message/ConvertEnums.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.o: ../../cea2045/cea2045/util/Checksum.h
+
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: ../../cea2045/cea2045/device/message/Message.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageMacros.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: ../../cea2045/cea2045/message/ConvertEnums.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o: ../../cea2045/cea2045/util/Checksum.h
 
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o: ../../cea2045/cea2045/device/message/Message.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetEnergyPrice.cpp.o: ../../cea2045/cea2045/device/message/SetEnergyPrice.cpp
@@ -252,6 +266,7 @@ CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: .
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDataLink.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
 CMakeFiles/cea2045.dir/cea2045/cea2045/processmessage/ProcessMessageUCM.cpp.o: ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h

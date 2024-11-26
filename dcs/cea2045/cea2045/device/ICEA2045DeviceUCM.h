@@ -129,7 +129,11 @@ public:
 	virtual std::future<ResponseCodes> intermediateGetCommodity() = 0;
 	virtual std::future<ResponseCodes> intermediateGetTemperatureOffset() = 0;
 	virtual std::future<ResponseCodes> intermediateGetSetPoint() = 0;
+	virtual std::future<ResponseCodes> intermediateGetAdvancedLoadUp() = 0;
 	virtual std::future<ResponseCodes> intermediateGetPresentTemperature() = 0;
+
+	virtual std::future<ResponseCodes> intermediateSetAdvancedLoadUp(unsigned char eventDuration, unsigned short value, unsigned short unit) = 0;
+	
 
 	virtual std::future<ResponseCodes> intermediateSetTemperatureOffset(unsigned char temperatureOffset, TemperatureUnits units) = 0;
 	virtual std::future<ResponseCodes> intermediateSetSetpoints(unsigned short deviceType, TemperatureUnits units, unsigned short setpoint1, unsigned short setpoint2) = 0;

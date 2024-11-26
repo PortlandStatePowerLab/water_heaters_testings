@@ -58,10 +58,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/local/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -78,13 +78,13 @@ CMAKE_BINARY_DIR = /home/pi/water_heaters_testings/dcs/build/debug
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/usr/local/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/usr/local/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target list_install_components
@@ -100,19 +100,19 @@ list_install_components/fast: list_install_components
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -123,7 +123,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -134,13 +134,13 @@ edit_cache/fast: edit_cache
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # The main all target
@@ -510,6 +510,33 @@ cea2045/cea2045/device/message/QueryMessageTypeSupported.s: cea2045/cea2045/devi
 cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cea2045.dir/build.make CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.s
 .PHONY : cea2045/cea2045/device/message/QueryMessageTypeSupported.cpp.s
+
+cea2045/cea2045/device/message/SetAdvancedLoadUp.o: cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o
+
+.PHONY : cea2045/cea2045/device/message/SetAdvancedLoadUp.o
+
+# target to build an object file
+cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cea2045.dir/build.make CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o
+.PHONY : cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.o
+
+cea2045/cea2045/device/message/SetAdvancedLoadUp.i: cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.i
+
+.PHONY : cea2045/cea2045/device/message/SetAdvancedLoadUp.i
+
+# target to preprocess a source file
+cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cea2045.dir/build.make CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.i
+.PHONY : cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.i
+
+cea2045/cea2045/device/message/SetAdvancedLoadUp.s: cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.s
+
+.PHONY : cea2045/cea2045/device/message/SetAdvancedLoadUp.s
+
+# target to generate assembly for a file
+cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cea2045.dir/build.make CMakeFiles/cea2045.dir/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.s
+.PHONY : cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp.s
 
 cea2045/cea2045/device/message/SetEnergyPrice.o: cea2045/cea2045/device/message/SetEnergyPrice.cpp.o
 
@@ -1369,6 +1396,9 @@ help:
 	@echo "... cea2045/cea2045/device/message/QueryMessageTypeSupported.o"
 	@echo "... cea2045/cea2045/device/message/QueryMessageTypeSupported.i"
 	@echo "... cea2045/cea2045/device/message/QueryMessageTypeSupported.s"
+	@echo "... cea2045/cea2045/device/message/SetAdvancedLoadUp.o"
+	@echo "... cea2045/cea2045/device/message/SetAdvancedLoadUp.i"
+	@echo "... cea2045/cea2045/device/message/SetAdvancedLoadUp.s"
 	@echo "... cea2045/cea2045/device/message/SetEnergyPrice.o"
 	@echo "... cea2045/cea2045/device/message/SetEnergyPrice.i"
 	@echo "... cea2045/cea2045/device/message/SetEnergyPrice.s"

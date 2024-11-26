@@ -277,6 +277,54 @@ SCENARIO("ProcessMessageUCM")
 
 	// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+	WHEN("SET ADVANCED LOAD UP RESPONSE")
+	{
+		cea2045IntermediateResponse message;
+		cea2045MessageHeader *header = (cea2045MessageHeader *)&message;
+
+		message.msgType1 = INTERMEDIATE_MSG_TYP1;
+		message.msgType2 = INTERMEDIATE_MSG_TYP2;
+		message.length = htobe16(3);
+		message.opCode1 = ADVANCED_LOADUP;
+		message.opCode2 = CLEAR_OP_CODE2;
+		message.responseCode = 1;
+
+		processMessage.processIntermediateMessage(&send, header);
+
+		THEN("SHOULD SEND LINK LAYER ACK")
+		{
+			CHECK(send.sendNakCount == 0);
+			CHECK(send.sendAckCount == 1);
+			CHECK(ucm.setAdvancedLoadUpResponseCount == 1);
+		}
+	}
+
+		// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+	WHEN("GET ADVANCED LOAD UP RESPONSE")
+	{
+		cea2045GetAdvancedLoadUpResponse message;
+		cea2045MessageHeader *header = (cea2045MessageHeader *)&message;
+
+		message.msgType1 = INTERMEDIATE_MSG_TYP1;
+		message.msgType2 = INTERMEDIATE_MSG_TYP2;
+		message.setLength();
+		message.opCode1 = ADVANCED_LOADUP;
+		message.opCode2 = CLEAR_OP_CODE2;
+		message.responseCode = 1;
+
+		processMessage.processIntermediateMessage(&send, header);
+
+		THEN("SHOULD SEND LINK LAYER ACK")
+		{
+			CHECK(send.sendNakCount == 0);
+			CHECK(send.sendAckCount == 1);
+			CHECK(ucm.getAdvancedLoadUpResponseCount == 1);
+		}
+	}
+
+	// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 	WHEN("GET SETPOINT RESPONSE1")
 	{
 		cea2045GetSetpointsResponse1 message;
@@ -322,6 +370,7 @@ SCENARIO("ProcessMessageUCM")
 			CHECK(ucm.getSetpointsResponse2Count == 1);
 		}
 	}
+
 
 	// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

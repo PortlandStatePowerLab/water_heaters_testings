@@ -85,6 +85,8 @@ message/StartCycling.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/StartCycling.h
 message/TerminateCycling.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/TerminateCycling.h
+message/SetAdvancedLoadUp.h
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.h
 
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/DeviceFactory.cpp
 DeviceFactory.h
@@ -177,6 +179,16 @@ future
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/QueryMessageTypeSupported.h
 ../../message/CEA2045MessageTypeSupported.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageTypeSupported.h
+../message/Message.h
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/Message.h
+
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.cpp
+../message/SetAdvancedLoadUp.h
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.h
+
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/SetAdvancedLoadUp.h
+../../message/CEA2045MessageSetAdvancedLoadUpRequest.h
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
 ../message/Message.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/device/message/Message.h
 
@@ -306,6 +318,10 @@ CEA2045MessageMacros.h
 CEA2045MessageMacros.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageMacros.h
 
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
+CEA2045MessageMacros.h
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageMacros.h
+
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 CEA2045MessageMacros.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageMacros.h
@@ -335,6 +351,10 @@ endian.h
 -
 ../util/Checksum.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/util/Checksum.h
+
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
+CEA2045MessageMacros.h
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageMacros.h
 
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
 CEA2045MessageMacros.h
@@ -405,6 +425,8 @@ endian.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
 ../message/CEA2045MessageGetUTCTimeResponse.h
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetUTCTimeResponse.h
+../message/CEA2045MessageGetAdvancedLoadUpResponse.h
+/home/pi/water_heaters_testings/dcs/cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
 
 /home/pi/water_heaters_testings/dcs/cea2045/cea2045/processmessage/ProcessMessageSGD.cpp
 ProcessMessageSGD.h

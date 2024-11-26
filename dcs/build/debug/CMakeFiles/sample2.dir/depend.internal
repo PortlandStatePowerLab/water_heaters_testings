@@ -5,6 +5,7 @@ CMakeFiles/sample2.dir/sample2/sample2/UCMImpl.cpp.o
  ../../cea2045/cea2045/message/CEA2045MessageBasic.h
  ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+ ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -32,6 +33,7 @@ CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o
  ../../cea2045/cea2045/device/message/Message.h
  ../../cea2045/cea2045/device/message/QueryMaxPayload.h
  ../../cea2045/cea2045/device/message/QueryMessageTypeSupported.h
+ ../../cea2045/cea2045/device/message/SetAdvancedLoadUp.h
  ../../cea2045/cea2045/device/message/SetEnergyPrice.h
  ../../cea2045/cea2045/device/message/SetSetpoints.h
  ../../cea2045/cea2045/device/message/SetTemperatureOffset.h
@@ -46,6 +48,7 @@ CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o
  ../../cea2045/cea2045/message/CEA2045MessageCommodityResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageDataLink.h
  ../../cea2045/cea2045/message/CEA2045MessageDeviceInfoResponse.h
+ ../../cea2045/cea2045/message/CEA2045MessageGetAdvancedLoadUpResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageGetPresentTemperatureResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageGetSetpointsResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageGetTemperatureOffsetResponse.h
@@ -53,6 +56,7 @@ CMakeFiles/sample2.dir/sample2/sample2/main.cpp.o
  ../../cea2045/cea2045/message/CEA2045MessageIntermediate.h
  ../../cea2045/cea2045/message/CEA2045MessageIntermediateResponse.h
  ../../cea2045/cea2045/message/CEA2045MessageMacros.h
+ ../../cea2045/cea2045/message/CEA2045MessageSetAdvancedLoadUpRequest.h
  ../../cea2045/cea2045/message/CEA2045MessageSetEnergyPriceRequest.h
  ../../cea2045/cea2045/message/CEA2045MessageSetSetpointsRequest.h
  ../../cea2045/cea2045/message/CEA2045MessageSetTemperatureOffsetRequest.h
