@@ -1,9 +1,0 @@
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/install.dir
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/list_install_components.dir
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/install/local.dir
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/rebuild_cache.dir
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/edit_cache.dir
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/sample2.dir
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/install/strip.dir
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/testcea2045.dir
-/home/pi/water_heaters_testings/dcs/build/debug/CMakeFiles/cea2045.dir

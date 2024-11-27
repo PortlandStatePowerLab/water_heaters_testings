@@ -71,6 +71,7 @@ void UCMImpl::processDeviceInfoResponse(cea2045::cea2045DeviceInfoResponse* mess
 
 	LOG(INFO) << "    device type: " << message->getDeviceType();
 	LOG(INFO) << "      vendor ID: " << message->getVendorID();
+	LOG(INFO) << "      bitmap capability: " << message->getBitmapCapbility();
 
 	LOG(INFO) << "  firmware date: "
 			<< 2000 + (int)message->firmwareYear20xx << "-" << (int)message->firmwareMonth << "-" << (int)message->firmwareDay;

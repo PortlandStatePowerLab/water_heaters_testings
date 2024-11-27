@@ -126,7 +126,9 @@ public:
 
 	virtual ~CEA2045DeviceUCM();
 
-	std::future<ResponseCodes> intermediateGetDeviceInformation();
+    std::future<ResponseCodes> intermediateSetCapabilityBit(unsigned char capabilityBit, unsigned char setValue);
+
+    std::future<ResponseCodes> intermediateGetDeviceInformation();
 	std::future<ResponseCodes> intermediateGetCommodity();
 	std::future<ResponseCodes> intermediateGetTemperatureOffset();
 	std::future<ResponseCodes> intermediateGetSetPoint();

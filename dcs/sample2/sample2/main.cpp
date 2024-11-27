@@ -30,6 +30,10 @@ INITIALIZE_EASYLOGGINGPP
 
 void perform_command(char cmd, shared_ptr<ICEA2045DeviceUCM> dev){
     switch (tolower(cmd)){
+		// case 'd':
+		// 	cout <<"getting dev information"<<endl;
+		// 	dev->intermediateGetDeviceInformation();
+		// 	break;
         case 's':
             cout<<"shedding"<<endl;
 	    dev->basicShed(0);
@@ -140,7 +144,9 @@ int main()
     sleep(5);
 	while (!shutdown)
 	{
+		cout<<"x- AdvancedLoadUp\n";
         cout<<"c- CriticalPeakEvent\n";
+		cout<<"d- deviceInfo\n";
         cout<<"e- Endshed\n";
         cout<<"g- GridEmergency\n";
         cout<<"l- Loadup\n";
@@ -153,8 +159,16 @@ int main()
 
 		switch (c)
 		{
+			case 'x':
+				device->intermediateSetCapabilityBit(0x06, 0x01).get();
+				break;
+			
 			case 'c':
 				device->basicCriticalPeakEvent(0).get();
+				break;
+			
+			case 'd':
+				device->intermediateGetDeviceInformation().get();
 				break;
 
 			case 'e':

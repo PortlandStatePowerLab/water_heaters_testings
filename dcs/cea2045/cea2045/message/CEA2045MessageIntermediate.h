@@ -113,8 +113,10 @@ struct cea2045Intermediate
 	unsigned char msgType1;
 	unsigned char msgType2;
 	unsigned short length;
-	unsigned char opCode1;
-	unsigned char opCode2;
+	unsigned char opCode1;      // 0x01 for Device Information
+    unsigned char opCode2;      // 0x03 for SetCapabilityBit
+    unsigned char capabilityBit;  // 0x06 for Advanced Load Up
+    unsigned char setValue;       // 0x01 to set, 0x00 to unset
 	unsigned short checksum;
 
 	MACRO_LENGTH

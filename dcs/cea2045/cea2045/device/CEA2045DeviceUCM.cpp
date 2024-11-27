@@ -102,6 +102,7 @@
  */
 
 #include "CEA2045DeviceUCM.h"
+#include "message/SetCapabilityBit.h"
 
 namespace cea2045 {
 
@@ -119,6 +120,25 @@ CEA2045DeviceUCM::~CEA2045DeviceUCM()
 {
 }
 
+
+//======================================================================================
+
+std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetCapabilityBit(unsigned char capabilityBit, unsigned char setValue)
+{
+    return queueRequest(new SetCapabilityBit(capabilityBit, setValue));
+}
+// std::future<ResponseCodes> intermediateSetCapabilityBit(unsigned char capabilityBit, unsigned char setValue);
+
+// std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetCapabilityBit(unsigned char capabilityBit, unsigned char setValue)
+// {
+// 	return queueRequest(new Intermediate(MessageCode::SET_CAPABILITY_BIT_REQUEST, 0x01, 0x03, capabilityBit, setValue));
+
+    // return queueRequest(new Intermediate(MessageCode::SET_CAPABILITY_BIT_REQUEST,
+    //         0x01,  // opCode1 for Device Information
+    //         0x03,  // opCode2 for SetCapabilityBit
+    //         capabilityBit,  // 0x06 for Advanced Load Up
+    //         setValue));     // 0x01 to set, 0x00 to unset
+// }
 //======================================================================================
 
 std::future<ResponseCodes> CEA2045DeviceUCM::intermediateGetDeviceInformation()

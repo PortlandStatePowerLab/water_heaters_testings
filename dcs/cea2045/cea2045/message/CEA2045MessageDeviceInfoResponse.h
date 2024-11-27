@@ -105,6 +105,8 @@
 #define CEA2045MESSAGEDEVICEINFORESPONSE_H_
 
 #include "CEA2045MessageMacros.h"
+#include <cstddef>
+#include <iostream>
 
 namespace cea2045 {
 
@@ -121,6 +123,7 @@ struct cea2045DeviceInfoResponse
 	unsigned short deviceType;
 	unsigned char deviceRevision[2];
 	unsigned char capability[4];
+	unsigned char capability6[6];
 	unsigned char reserved1;
 	unsigned char modelNumber[16];
 	unsigned char serialNumber[16];
@@ -139,6 +142,18 @@ struct cea2045DeviceInfoResponse
 	unsigned short getDeviceType()
 	{
 		return be16toh(deviceType);
+	}
+
+	unsigned short getBitmapCapbility()
+	{
+		std::size_t size=sizeof(capability6);
+		std::cout << "Capability size: " << size << " bytes" << std::endl;
+
+		for (std::size_t i = 0; i < size; ++i)
+		{
+			std::cout << static_cast<int>(capability6[i]) << " ";
+		}
+		std::cout << std::endl;
 	}
 
 	MACRO_LENGTH
