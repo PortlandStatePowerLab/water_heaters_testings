@@ -54,11 +54,6 @@ void perform_command(char cmd, shared_ptr<ICEA2045DeviceUCM> dev){
             cout<<"critical peak event"<<endl;
 	    dev->basicCriticalPeakEvent(0);
             break;
-		
-		case 'a':
-			cout<<"advanced load up"<<endl;
-		dev->intermediateGetAdvancedLoadUp();
-			break;
 
         default:
             break;
@@ -150,7 +145,6 @@ int main()
         cout<<"e- Endshed\n";
         cout<<"g- GridEmergency\n";
         cout<<"l- Loadup\n";
-		cout<<"a- Advanced Loadup\n";
         cout<<"o- OutsideCommunication\n";
         cout<<"s- Shed\n";
         cout<<"q- Quit\n";
@@ -181,10 +175,6 @@ int main()
 
 			case 'l':
 				device->basicLoadUp(0).get();
-				break;
-
-			case 'a':
-				device->intermediateGetAdvancedLoadUp().get();
 				break;
 
 			case '\n':

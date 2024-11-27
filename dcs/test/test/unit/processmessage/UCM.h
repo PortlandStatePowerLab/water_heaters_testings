@@ -121,6 +121,7 @@ public:
 	virtual MaxPayloadLengthCode getMaxPayload();
 
 	virtual void processMaxPayloadResponse(MaxPayloadLengthCode maxPayload);
+	virtual void processSetCapabilityBitResponse(cea2045IntermediateResponse* message);
 	virtual void processDeviceInfoResponse(cea2045DeviceInfoResponse *message);
 	virtual void processCommodityResponse(cea2045CommodityResponse *message);
 	virtual void processSetEnergyPriceResponse(cea2045IntermediateResponse *message);
@@ -135,7 +136,8 @@ public:
 	virtual void processGetUTCTimeResponse(cea2045GetUTCTimeResponse *message);
 	virtual void processAckReceived(MessageCode messageCode);
 	virtual void processNakReceived(LinkLayerNakCode nak, MessageCode messageCode);
-	
+	virtual void processSetAdvancedLoadUpResponse(cea2045IntermediateResponse *message);
+	virtual void processGetAdvancedLoadUpResponse(cea2045GetAdvancedLoadUpResponse *message);
 	virtual void processAppAckReceived(cea2045::cea2045Basic *message);
 	virtual void processAppNakReceived(cea2045::cea2045Basic *message);
 	virtual void processOperationalStateReceived(cea2045Basic *message);
@@ -144,6 +146,7 @@ public:
 	virtual void processIncompleteMessage(const unsigned char *buffer, unsigned int numBytes);
 
 	int messageTypeSupportedCount;
+	int setCapabilityBitResponseCount;
 	int maxPayloadCount;
 	int payloadResponseCount;
 	int deviceInfoResponseCount;

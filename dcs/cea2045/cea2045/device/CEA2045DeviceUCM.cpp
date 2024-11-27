@@ -174,11 +174,11 @@ std::future<ResponseCodes> CEA2045DeviceUCM::intermediateGetSetPoint()
 
 //======================================================================================
 
-std::future<ResponseCodes> CEA2045DeviceUCM::intermediateGetAdvancedLoadUp()
-{
-	return queueRequest(new Intermediate(MessageCode::GET_ADVANCEDLOADUP_REQUEST,
-			ADVANCED_LOADUP, CLEAR_OP_CODE2));
-}
+// std::future<ResponseCodes> CEA2045DeviceUCM::intermediateGetAdvancedLoadUp()
+// {
+// 	return queueRequest(new Intermediate(MessageCode::GET_ADVANCEDLOADUP_REQUEST,
+// 			ADVANCED_LOADUP, CLEAR_OP_CODE2));
+// }
 
 //======================================================================================
 
@@ -205,10 +205,10 @@ std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetSetpoints(unsigned s
 //======================================================================================
 
 
-std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetAdvancedLoadUp(unsigned char eventDuration, unsigned short value, unsigned short unit)
-{
-	return queueRequest(new SetAdvancedLoadUp(eventDuration, value, unit));
-}
+// std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetAdvancedLoadUp(unsigned char eventDuration, unsigned short value, unsigned short unit)
+// {
+// 	return queueRequest(new SetAdvancedLoadUp(eventDuration, value, unit));
+// }
 
 //======================================================================================
 

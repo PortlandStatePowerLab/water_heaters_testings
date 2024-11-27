@@ -114,7 +114,6 @@
 #include "message/SetTemperatureOffset.h"
 #include "message/StartCycling.h"
 #include "message/TerminateCycling.h"
-#include "message/SetAdvancedLoadUp.h"
 
 namespace cea2045 {
 
@@ -127,16 +126,11 @@ public:
 	virtual ~CEA2045DeviceUCM();
 
     std::future<ResponseCodes> intermediateSetCapabilityBit(unsigned char capabilityBit, unsigned char setValue);
-
     std::future<ResponseCodes> intermediateGetDeviceInformation();
 	std::future<ResponseCodes> intermediateGetCommodity();
 	std::future<ResponseCodes> intermediateGetTemperatureOffset();
 	std::future<ResponseCodes> intermediateGetSetPoint();
 	std::future<ResponseCodes> intermediateGetPresentTemperature();
-	std::future<ResponseCodes> intermediateGetAdvancedLoadUp();
-
-
-	std::future<ResponseCodes> intermediateSetAdvancedLoadUp(unsigned char eventDuration, unsigned short value, unsigned short unit);
 	
 
 	std::future<ResponseCodes> intermediateSetTemperatureOffset(unsigned char temperatureOffset, TemperatureUnits units);

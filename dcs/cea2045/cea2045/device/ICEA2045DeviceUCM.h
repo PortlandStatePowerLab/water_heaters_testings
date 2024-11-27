@@ -129,7 +129,6 @@ public:
 	virtual std::future<ResponseCodes> intermediateGetCommodity() = 0;
 	virtual std::future<ResponseCodes> intermediateGetTemperatureOffset() = 0;
 	virtual std::future<ResponseCodes> intermediateGetSetPoint() = 0;
-	virtual std::future<ResponseCodes> intermediateGetAdvancedLoadUp() = 0;
 	virtual std::future<ResponseCodes> intermediateGetPresentTemperature() = 0;
 	virtual std::future<ResponseCodes> intermediateSetCapabilityBit(unsigned char capabilityBit, unsigned char setValue) = 0;
 	virtual std::future<ResponseCodes> intermediateSetTemperatureOffset(unsigned char temperatureOffset, TemperatureUnits units) = 0;

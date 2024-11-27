@@ -128,6 +128,7 @@ UCM::UCM()
 	appAckReceivedCount = 0;
 	appNakReceivedCount = 0;
 	operationalStateCount = 0;
+	setCapabilityBitResponseCount = 0;
 
 	messageType = MessageTypeCode::NONE;
 }
@@ -154,6 +155,21 @@ MaxPayloadLengthCode UCM::getMaxPayload()
 {
 	return MaxPayloadLengthCode::LENGTH4096;
 }
+
+// We are not using ALU but keep these here. Too much work to remove everything related to ALU so whatever
+// They won't imapct our work. FYI, we are using CapabilityBit to implement ALU, since ALU won't work
+// unless bit is set to 1
+void UCM::processSetAdvancedLoadUpResponse(cea2045IntermediateResponse *message)
+{
+
+}
+
+
+void UCM::processGetAdvancedLoadUpResponse(cea2045GetAdvancedLoadUpResponse *message)
+{
+
+}
+
 
 void UCM::processMaxPayloadResponse(MaxPayloadLengthCode maxPayload)
 {
@@ -254,6 +270,12 @@ void cea2045test::processmessage::UCM::processOperationalStateReceived(
 	operationalStateCount++;
 }
 
+
+
+void UCM::processSetCapabilityBitResponse(cea2045IntermediateResponse* message)
+{
+    setCapabilityBitResponseCount++;
+}
 } /* namespace processmessage */
 } /* namespace test */
 

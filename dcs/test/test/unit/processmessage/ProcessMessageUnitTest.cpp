@@ -277,7 +277,8 @@ SCENARIO("ProcessMessageUCM")
 
 	// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-	WHEN("SET ADVANCED LOAD UP RESPONSE")
+	
+	WHEN("SET CAPABILITY BIT RESPONSE")
 	{
 		cea2045IntermediateResponse message;
 		cea2045MessageHeader *header = (cea2045MessageHeader *)&message;
@@ -285,8 +286,8 @@ SCENARIO("ProcessMessageUCM")
 		message.msgType1 = INTERMEDIATE_MSG_TYP1;
 		message.msgType2 = INTERMEDIATE_MSG_TYP2;
 		message.length = htobe16(3);
-		message.opCode1 = ADVANCED_LOADUP;
-		message.opCode2 = CLEAR_OP_CODE2;
+		message.opCode1 = 0x01;  // Device Information
+		message.opCode2 = 0x03;  // SetCapabilityBit
 		message.responseCode = 1;
 
 		processMessage.processIntermediateMessage(&send, header);
@@ -295,33 +296,33 @@ SCENARIO("ProcessMessageUCM")
 		{
 			CHECK(send.sendNakCount == 0);
 			CHECK(send.sendAckCount == 1);
-			CHECK(ucm.setAdvancedLoadUpResponseCount == 1);
+			CHECK(ucm.setCapabilityBitResponseCount == 1);
 		}
 	}
 
 		// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-	WHEN("GET ADVANCED LOAD UP RESPONSE")
-	{
-		cea2045GetAdvancedLoadUpResponse message;
-		cea2045MessageHeader *header = (cea2045MessageHeader *)&message;
+	// WHEN("GET ADVANCED LOAD UP RESPONSE")
+	// {
+	// 	cea2045GetAdvancedLoadUpResponse message;
+	// 	cea2045MessageHeader *header = (cea2045MessageHeader *)&message;
 
-		message.msgType1 = INTERMEDIATE_MSG_TYP1;
-		message.msgType2 = INTERMEDIATE_MSG_TYP2;
-		message.setLength();
-		message.opCode1 = ADVANCED_LOADUP;
-		message.opCode2 = CLEAR_OP_CODE2;
-		message.responseCode = 1;
+	// 	message.msgType1 = INTERMEDIATE_MSG_TYP1;
+	// 	message.msgType2 = INTERMEDIATE_MSG_TYP2;
+	// 	message.setLength();
+	// 	message.opCode1 = ADVANCED_LOADUP;
+	// 	message.opCode2 = CLEAR_OP_CODE2;
+	// 	message.responseCode = 1;
 
-		processMessage.processIntermediateMessage(&send, header);
+	// 	processMessage.processIntermediateMessage(&send, header);
 
-		THEN("SHOULD SEND LINK LAYER ACK")
-		{
-			CHECK(send.sendNakCount == 0);
-			CHECK(send.sendAckCount == 1);
-			CHECK(ucm.getAdvancedLoadUpResponseCount == 1);
-		}
-	}
+	// 	THEN("SHOULD SEND LINK LAYER ACK")
+	// 	{
+	// 		CHECK(send.sendNakCount == 0);
+	// 		CHECK(send.sendAckCount == 1);
+	// 		CHECK(ucm.getAdvancedLoadUpResponseCount == 1);
+	// 	}
+	// }
 
 	// # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
