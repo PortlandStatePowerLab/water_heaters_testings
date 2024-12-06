@@ -65,17 +65,62 @@ void UCMImpl::processMaxPayloadResponse(cea2045::MaxPayloadLengthCode maxPayload
 
 //======================================================================================
 
-void UCMImpl::processDeviceInfoResponse(cea2045::cea2045DeviceInfoResponse* message)
-{
-	LOG(INFO) << "device info response received";
+// void UCMImpl::processDeviceInfoResponse(cea2045::cea2045DeviceInfoResponse* message)
+// {
+// 	LOG(INFO) << "device info response received";
 
-	LOG(INFO) << "    device type: " << message->getDeviceType();
-	LOG(INFO) << "      vendor ID: " << message->getVendorID();
-	LOG(INFO) << "      bitmap capability: " << message->getBitmapCapbility();
+// 	LOG(INFO) << "    device type: " << message->getDeviceType();
+// 	LOG(INFO) << "      vendor ID: " << message->getVendorID();
+// 	LOG(INFO) << "      bitmap capability: " << message->getBitmapCapbility();
 
-	LOG(INFO) << "  firmware date: "
-			<< 2000 + (int)message->firmwareYear20xx << "-" << (int)message->firmwareMonth << "-" << (int)message->firmwareDay;
+// 	LOG(INFO) << "  firmware date: "
+// 			<< 2000 + (int)message->firmwareYear20xx << "-" << (int)message->firmwareMonth << "-" << (int)message->firmwareDay;
+// }
+
+
+void UCMImpl::processDeviceInfoResponse(cea2045::cea2045DeviceInfoResponse *message) {
+    std::cout << "Device Info Response:\n"
+              << "  Version: 0x" << std::hex << (int)message->version[0] << (int)message->version[1] << "\n"
+              << "  Vendor ID: 0x" << std::hex << message->getVendorID() << "\n"
+              << "  Device Type: 0x" << std::hex << message->getDeviceType() << "\n"
+              << "  Raw capability bytes: ";
+    
+    for(int i = 0; i < sizeof(message->capability); i++) {
+        std::cout << "0x" << std::hex << (int)message->capability[i] << " ";
+    }
+    std::cout << "\nRaw capability6 bytes: ";
+    for(int i = 0; i < sizeof(message->capability6); i++) {
+        std::cout << "0x" << std::hex << (int)message->capability6[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Calculate which byte and bit we expect Advanced Load Up to be in
+    int targetByte = 6 / 8;  // Should be 0
+    int targetBit = 6 % 8;   // Should be 6
+    std::cout << "Advanced Load Up should be bit " << targetBit 
+              << " in byte " << targetByte << " of capability6" << std::endl;
 }
+
+void UCMImpl::processSetCapabilityBitResponse(cea2045::cea2045IntermediateResponse *message) {
+    std::cout << "Processing SetCapabilityBit response:\n"
+              << "  opCode1: 0x" << std::hex << (int)message->opCode1 << "\n"
+              << "  opCode2: 0x" << std::hex << (int)message->opCode2 << "\n"
+              << "  responseCode: 0x" << std::hex << (int)message->responseCode << "\n"
+              << "  Success: " << (message->responseCode == 0x00 ? "YES" : "NO") 
+              << std::endl;
+}
+
+// virtual void processDeviceInfoResponse(cea2045::cea2045DeviceInfoResponse *message) {
+//     std::cout << "Device Info Response:\n"
+//               << "  Version: 0x" << std::hex << (int)message->version[0] << (int)message->version[1] << "\n"
+//               << "  Vendor ID: 0x" << std::hex << message->getVendorID() << "\n"
+//               << "  Device Type: 0x" << std::hex << message->getDeviceType() << "\n"
+//               << "  Capability bits: ";
+    
+//     message->getBitmapCapbility();  // This will print capability bits
+    
+//     std::cout << std::endl;
+// }
 
 //======================================================================================
 

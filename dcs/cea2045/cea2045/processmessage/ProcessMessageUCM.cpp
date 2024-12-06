@@ -209,11 +209,22 @@ void ProcessMessageUCM::processBasicMessage(ILinkLayerCommSend *linkLayer, cea20
 
 void ProcessMessageUCM::processIntermediateMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message)
 {
-	if (!m_ucm->isMessageTypeSupported(MessageTypeCode::INTERMEDIATE))
-	{
-		linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
-		return;
-	}
+    std::cout << "Received Intermediate message:\n"
+              << "  msgType1: 0x" << std::hex << (int)message->msgType1 << "\n"
+              << "  msgType2: 0x" << std::hex << (int)message->msgType2 << "\n"
+              << "  length: 0x" << std::hex << message->getLength() << std::endl;
+
+    if (!m_ucm->isMessageTypeSupported(MessageTypeCode::INTERMEDIATE))
+    {
+        std::cout << "Intermediate messages not supported" << std::endl;
+        linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
+        return;
+    }
+	// if (!m_ucm->isMessageTypeSupported(MessageTypeCode::INTERMEDIATE))
+	// {
+	// 	linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
+	// 	return;
+	// }
 
 	cea2045Intermediate *intermediate = (cea2045Intermediate *)message;
 
@@ -253,6 +264,22 @@ void ProcessMessageUCM::processIntermediateMessage(ILinkLayerCommSend *linkLayer
 				linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
 			}
 
+			break;
+		}
+
+		case IntermediateTypeCode::SET_CAPABILITY_BIT_MESSAGE:
+		{
+			std::cout << "Received SetCapabilityBit response with length: " 
+					<< message->getLength() << std::endl;
+					
+			cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
+			std::cout << "Response details:\n"
+					<< "  opCode1: 0x" << std::hex << (int)intermediateResponse->opCode1 << "\n"
+					<< "  opCode2: 0x" << std::hex << (int)intermediateResponse->opCode2 << "\n"
+					<< "  responseCode: 0x" << std::hex << (int)intermediateResponse->responseCode << std::endl;
+			
+			m_ucm->processSetCapabilityBitResponse(intermediateResponse);
+			linkLayer->sendLinkLayerAck();
 			break;
 		}
 
@@ -402,8 +429,12 @@ void ProcessMessageUCM::processIntermediateMessage(ILinkLayerCommSend *linkLayer
 		}
 
 		default:
-			linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
-			break;
+			std::cout << "Unhandled intermediate message type: 0x" 
+                     << std::hex << intermediateType << std::endl;
+            linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
+            break;
+			// linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
+			// break;
 	}
 }
 

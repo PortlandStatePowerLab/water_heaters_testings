@@ -102,6 +102,7 @@
  */
 
 #include "../message/ConvertEnums.h"
+#include <iostream>
 
 #include <endian.h>
 
@@ -145,7 +146,7 @@ MessageTypeCode ConvertEnums::convertMessageType(unsigned short messageType)
 }
 
 //======================================================================================
-
+// Convert enumeration to strings, arrays, and other types.
 LinkLayerNakCode ConvertEnums::convertLinkLayerNak(unsigned char nak)
 {
 	if (nak > (unsigned char)LinkLayerNakCode::REQUEST_NOT_SUPPORTED)
@@ -176,11 +177,112 @@ MaxPayloadLengthCode ConvertEnums::convertMaxPayloadLength(unsigned char maxPayl
 
 //======================================================================================
 
+// IntermediateTypeCode ConvertEnums::convertIntermediateType(unsigned short intermediateType)
+// {
+
+// 	std::cout << "Converting intermediate type: 0x" << std::hex << intermediateType << std::endl;
+//     // Convert to host byte order first
+//     intermediateType = be16toh(intermediateType);
+
+//     switch (intermediateType)
+//     {
+//         case 0x0101:
+//             return IntermediateTypeCode::INFO_REQUEST;
+//         case 0x0181:
+//             return IntermediateTypeCode::INFO_RESPONSE;
+//         case 0x0200:
+//             return IntermediateTypeCode::GET_UTC_TIME_REQUEST;
+//         case 0x0600:
+//             return IntermediateTypeCode::COMMODITY_REQUEST;
+//         case 0x0680:
+//             return IntermediateTypeCode::COMMODITY_RESPONSE;
+//         case 0x0380:
+//             return IntermediateTypeCode::SET_ENERGY_PRICE_RESPONSE;
+//         case 0x0302:
+//             return IntermediateTypeCode::GET_SET_TEMPERATURE_OFFSET_REQUEST;
+//         case 0x0382:
+//             return IntermediateTypeCode::GET_SET_TEMPERATURE_OFFSET_RESPONSE;
+//         case 0x0383:
+//             return IntermediateTypeCode::GET_SET_SETPOINT_RESPONSE;
+//         case 0x0384:
+//             return IntermediateTypeCode::GET_PRESENT_TEMPERATURE_RESPONSE;
+//         case 0x0480:
+//             return IntermediateTypeCode::START_CYCLING_RESPONSE;
+//         case 0x0481:
+//             return IntermediateTypeCode::TERMINATE_CYCLING_RESPONSE;
+//         case 0x0103: // here is the set capability bit request. Don't think order matters!
+//             return IntermediateTypeCode::SET_CAPABILITY_BIT_MESSAGE;
+// 		case 0x0183:  // set capability bit response
+//             return IntermediateTypeCode::SET_CAPABILITY_BIT_MESSAGE;
+//         default:
+// 			std::cout << "No matching intermediate type for: 0x" << std::hex << intermediateType << std::endl;
+//             return IntermediateTypeCode::INVALID;
+//     }
+// }
+// }
+
+
+
 IntermediateTypeCode ConvertEnums::convertIntermediateType(unsigned short intermediateType)
 {
-	intermediateType = be16toh(intermediateType);
+    std::cout << "Converting intermediate type (raw): 0x" << std::hex << intermediateType << std::endl;
+    
+    // Get the bytes in both orders to check
+    unsigned char firstByte = (intermediateType >> 8) & 0xFF;
+    unsigned char secondByte = intermediateType & 0xFF;
+    
+    std::cout << "  firstByte: 0x" << std::hex << (int)firstByte 
+              << ", secondByte: 0x" << std::hex << (int)secondByte << std::endl;
 
-	return static_cast<IntermediateTypeCode>(intermediateType);
+    // Check both byte orders for Device Info Response
+    if ((firstByte == 0x81 && secondByte == 0x01) ||  // as we're receiving
+        (firstByte == 0x01 && secondByte == 0x81)) {  // as per spec
+        return IntermediateTypeCode::INFO_RESPONSE;
+    }
+
+    // Check both byte orders for SetCapabilityBit Response
+    if ((firstByte == 0x83 && secondByte == 0x01) ||
+        (firstByte == 0x01 && secondByte == 0x83)) {
+        return IntermediateTypeCode::SET_CAPABILITY_BIT_MESSAGE;
+    }
+
+    // Check both byte orders for SetCapabilityBit Request
+    if ((firstByte == 0x03 && secondByte == 0x01) ||
+        (firstByte == 0x01 && secondByte == 0x03)) {
+        return IntermediateTypeCode::SET_CAPABILITY_BIT_MESSAGE;
+    }
+
+    std::cout << "No matching intermediate type for bytes: 0x" 
+              << std::hex << (int)firstByte << ", 0x" << (int)secondByte << std::endl;
+    return IntermediateTypeCode::INVALID;
 }
+// IntermediateTypeCode ConvertEnums::convertIntermediateType(unsigned short intermediateType)
+// {
+//     std::cout << "Converting intermediate type (raw): 0x" << std::hex << intermediateType << std::endl;
+    
+//     unsigned char opCode2 = (intermediateType >> 8) & 0xFF;
+//     unsigned char opCode1 = intermediateType & 0xFF;
 
-} /* namespace cea2045 */
+
+    
+//     std::cout << "  opCode1: 0x" << std::hex << (int)opCode1 
+//               << ", opCode2: 0x" << std::hex << (int)opCode2 << std::endl;
+
+//     // For SetCapabilityBit response, opCode1 = 0x83, opCode2 = 0x01
+//     if (opCode1 == 0x83 && opCode2 == 0x01) {
+//         return IntermediateTypeCode::SET_CAPABILITY_BIT_MESSAGE;
+//     }
+    
+//     // For SetCapabilityBit request, opCode1 = 0x01, opCode2 = 0x03
+//     if (opCode1 == 0x01 && opCode2 == 0x03) {
+//         return IntermediateTypeCode::SET_CAPABILITY_BIT_MESSAGE;
+//     }
+	
+// 	if (opCode1 == 0x81 && opCode2 == 0x01) {
+//         return IntermediateTypeCode::INFO_RESPONSE;
+//     }
+
+//     std::cout << "No matching intermediate type" << std::endl;
+//     return IntermediateTypeCode::INVALID;
+// }
+}

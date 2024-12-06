@@ -30,10 +30,10 @@ INITIALIZE_EASYLOGGINGPP
 
 void perform_command(char cmd, shared_ptr<ICEA2045DeviceUCM> dev){
     switch (tolower(cmd)){
-		// case 'd':
-		// 	cout <<"getting dev information"<<endl;
-		// 	dev->intermediateGetDeviceInformation();
-		// 	break;
+		case 'd':
+			cout <<"getting dev information"<<endl;
+			dev->intermediateGetDeviceInformation();
+			break;
         case 's':
             cout<<"shedding"<<endl;
 	    dev->basicShed(0);
@@ -139,7 +139,7 @@ int main()
     sleep(5);
 	while (!shutdown)
 	{
-		cout<<"x- AdvancedLoadUp\n";
+		cout<<"\nx- AdvancedLoadUp\n";
         cout<<"c- CriticalPeakEvent\n";
 		cout<<"d- deviceInfo\n";
         cout<<"e- Endshed\n";
@@ -154,9 +154,26 @@ int main()
 		switch (c)
 		{
 			case 'x':
+				std::cout << "Testing Advanced Load Up bit persistence...\n";
+				
+				// First try - set and verify
+				std::cout << "\n1. First attempt to set bit 6...\n";
 				device->intermediateSetCapabilityBit(0x06, 0x01).get();
+				device->intermediateGetDeviceInformation().get();
+
+				// Second try - set it again
+				std::cout << "\n2. Second attempt to set bit 6...\n";
+				device->intermediateSetCapabilityBit(0x06, 0x01).get();
+				device->intermediateGetDeviceInformation().get();
+
+				// Third try - set it with a longer delay
+				std::cout << "\n3. Third attempt with delay...\n";
+				device->intermediateSetCapabilityBit(0x06, 0x01).get();
+				std::cout << "Waiting 5 seconds...\n";
+				sleep(5);
+				device->intermediateGetDeviceInformation().get();
 				break;
-			
+
 			case 'c':
 				device->basicCriticalPeakEvent(0).get();
 				break;

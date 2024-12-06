@@ -145,16 +145,12 @@ struct cea2045DeviceInfoResponse
 	}
 
 	unsigned short getBitmapCapbility()
-	{
-		std::size_t size=sizeof(capability6);
-		std::cout << "Capability size: " << size << " bytes" << std::endl;
-
-		for (std::size_t i = 0; i < size; ++i)
-		{
-			std::cout << static_cast<int>(capability6[i]) << " ";
-		}
-		std::cout << std::endl;
-	}
+    {
+        // Instead of just printing, let's actually check bit 6 for Advanced Load Up
+        unsigned char advancedLoadUpBit = (capability6[0] & 0x40) >> 6; // Bit 6 for Advanced Load Up
+        std::cout << "Advanced Load Up capability: " << (advancedLoadUpBit ? "Enabled" : "Disabled") << std::endl;
+        return advancedLoadUpBit;
+    }
 
 	MACRO_LENGTH
 	MACRO_CHECKSUM

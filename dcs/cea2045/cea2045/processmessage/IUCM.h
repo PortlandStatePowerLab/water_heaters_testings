@@ -114,6 +114,7 @@
 #include "../message/CEA2045MessageGetPresentTemperatureResponse.h"
 #include "../message/CEA2045MessageGetUTCTimeResponse.h"
 #include "../message/CEA2045MessageGetAdvancedLoadUpResponse.h"
+#include "../message/CEA2045MessageSetCapabilityBitRequest.h"
 
 namespace cea2045 {
 
@@ -134,6 +135,7 @@ public:
 	virtual void processGetTemperatureOffsetResponse(cea2045GetTemperateOffsetResponse *message) = 0;
 	virtual void processGetSetpointsResponse(cea2045GetSetpointsResponse2 *message) = 0;
 	virtual void processGetSetpointsResponse(cea2045GetSetpointsResponse1 *message) = 0;
+	virtual void processSetCapabilityBitResponse(cea2045IntermediateResponse *message) = 0;
 
 	virtual void processSetAdvancedLoadUpResponse(cea2045IntermediateResponse *message) = 0;
 	virtual void processGetAdvancedLoadUpResponse(cea2045GetAdvancedLoadUpResponse *message) = 0;

@@ -37,16 +37,15 @@ public:
 
 	virtual bool isMessageTypeSupported(cea2045::MessageTypeCode messageType);
 	virtual cea2045::MaxPayloadLengthCode getMaxPayload();
-
 	virtual void processMaxPayloadResponse(cea2045::MaxPayloadLengthCode maxPayload);
 	virtual void processDeviceInfoResponse(cea2045::cea2045DeviceInfoResponse *message);
+	virtual void processSetCapabilityBitResponse(cea2045::cea2045IntermediateResponse *message);
 	virtual void processCommodityResponse(cea2045::cea2045CommodityResponse *message);
 	virtual void processSetEnergyPriceResponse(cea2045::cea2045IntermediateResponse *message) {};
 	virtual void processSetTemperatureOffsetResponse(cea2045::cea2045IntermediateResponse *message) {};
 	virtual void processGetTemperatureOffsetResponse(cea2045::cea2045GetTemperateOffsetResponse *message) {};
 	virtual void processSetSetpointsResponse(cea2045::cea2045IntermediateResponse *message) {};
 	virtual void processGetSetpointsResponse(cea2045::cea2045GetSetpointsResponse1 *message) {};
-
 	virtual void processSetAdvancedLoadUpResponse(cea2045::cea2045IntermediateResponse *message) {};
 	virtual void processGetAdvancedLoadUpResponse(cea2045::cea2045GetAdvancedLoadUpResponse *message) {};
 
