@@ -74,12 +74,12 @@ def start_commodity(mode):
     time.sleep(5)
 
 def update_csv(input_file, output_file, last_line):
-'''
-This function will copy each line from
-the log.csv file to the new output file
-that is named according to brand, volume, mode.
-
-'''
+    '''
+    This function will copy each line from
+    the log.csv file to the new output file
+    that is named according to brand, volume, mode.
+    
+    '''
 
     with open(input_file, 'r') as input_csv, open(output_file, 'a') as output_csv:
         reader = csv.reader((row.replace('\0','') for row in input_csv), delimiter=',')
@@ -92,10 +92,10 @@ that is named according to brand, volume, mode.
 
 # end commodity service
 def end_service():
-'''
-This function kills
-commodity service. 
-''' 
+    '''
+    This function kills
+    commodity service. 
+    ''' 
     os.kill(process.pid, signal.SIGINT)
     process.wait()
     time.sleep(5)
