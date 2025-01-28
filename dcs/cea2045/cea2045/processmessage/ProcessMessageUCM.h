@@ -125,13 +125,14 @@ public:
 	virtual void processMessageTypeSupported(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message);
 
 	virtual void processBasicMessage(ILinkLayerCommSend *linkLayer, cea2045Basic *basic);
-	virtual void processIntermediateMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message);
 
 	virtual void processDataLinkMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message);
 
 	virtual void processInvalidMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message);
 
 	virtual void processIncompleteMessage(ILinkLayerCommSend *linkLayer, const unsigned char *buffer, unsigned int numBytes);
+	virtual void processIntermediateMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message);
+	virtual void processDeviceInfoResponse(cea2045DeviceInfoResponse *message);
 };
 
 } /* namespace cea2045 */

@@ -104,6 +104,7 @@
 #include "LinkLayerCommImpl.h"
 
 #include "../message/CEA2045Message.h"
+#include <iomanip>
 
 namespace cea2045 {
 
@@ -124,7 +125,15 @@ LinkLayerCommImpl::~LinkLayerCommImpl()
 
 int LinkLayerCommImpl::send(const unsigned char* buffer, int length)
 {
-	return m_communicationPort->send(buffer, length);
+    std::cout << "LinkLayerCommImpl::send - Full message dump:" << std::endl;
+    for(int i = 0; i < length; i++) {
+        std::cout << std::hex << std::setw(2) << std::setfill('0') 
+                  << (int)buffer[i] << " ";
+        if((i + 1) % 8 == 0) std::cout << std::endl;
+    }
+    std::cout << std::dec << std::endl;
+    
+    return m_communicationPort->send(buffer, length);
 }
 
 //======================================================================================
@@ -184,6 +193,10 @@ int LinkLayerCommImpl::sendLinkLayerNak(LinkLayerNakCode nak)
 
 unsigned int LinkLayerCommImpl::recv(ReceiveBuffer& receiveBuffer, unsigned int waitMS)
 {
+    // std::cout << "LinkLayerCommImpl::recv called with waitMS: " << waitMS << std::endl;
+    // unsigned int result = receiveBuffer.read(m_communicationPort, waitMS);
+    // std::cout << "LinkLayerCommImpl::recv returned: " << result << std::endl;
+    // return result;
 	return receiveBuffer.read(m_communicationPort, waitMS);
 }
 

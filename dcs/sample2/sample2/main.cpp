@@ -30,10 +30,12 @@ INITIALIZE_EASYLOGGINGPP
 
 void perform_command(char cmd, shared_ptr<ICEA2045DeviceUCM> dev){
     switch (tolower(cmd)){
-		case 'd':
-			cout <<"getting dev information"<<endl;
-			dev->intermediateGetDeviceInformation();
+
+		case 'a':
+			cout << "advanced load up"<< endl;
+			dev->intermediateSetAdvancedLoadUp(60, 5, 0x02).get();
 			break;
+			
         case 's':
             cout<<"shedding"<<endl;
 	    dev->basicShed(0);
@@ -101,11 +103,9 @@ void commodity_service_loop(shared_ptr<ICEA2045DeviceUCM> dev){
 	file << lines<<endl;
 	file.close();
 	// ------------------------------ end of scheduler ----------------------
-	// send routine commands (commodity read & op status)
-	// dev->intermediateGetDeviceInformation().get();
 	dev->intermediateGetCommodity().get();
-        dev->basicQueryOperationalState().get();
-        sleep(60);
+	dev->basicQueryOperationalState().get();
+	sleep(60);
     }
 }
 int main()
@@ -122,13 +122,7 @@ int main()
 		LOG(ERROR) << "failed to open serial port: " << strerror(errno);
 		return 0;
 	}
-
-	//shared_ptr<ICEA2045DeviceUCM> device = make_shared<DeviceFactory::createUCM(&sp, &ucm)>();
-    //auto device = mak
-	//shared_ptr<ICEA2045DeviceUCM> device = make_shared<DeviceFactory::createUCM>(&sp,&ucm);
     shared_ptr<ICEA2045DeviceUCM> device(DeviceFactory::createUCM(&sp,&ucm));
-    //device = make_shared<ICEA2045DeviceUCM>();
-    //device = DeviceFactory::createUCM(&sp,&ucm);
 
 	device->start();
 
@@ -139,48 +133,39 @@ int main()
     sleep(5);
 	while (!shutdown)
 	{
-		cout<<"\nx- AdvancedLoadUp\n";
+		cout<<"a- Advanced Load Up\n";
         cout<<"c- CriticalPeakEvent\n";
-		cout<<"d- deviceInfo\n";
         cout<<"e- Endshed\n";
         cout<<"g- GridEmergency\n";
         cout<<"l- Loadup\n";
         cout<<"o- OutsideCommunication\n";
         cout<<"s- Shed\n";
         cout<<"q- Quit\n";
+		cout<<"d- Device Info\n";
         cout<<"enter choice: ";
 		char c = getchar();
 
 		switch (c)
 		{
-			case 'x':
-				std::cout << "Testing Advanced Load Up bit persistence...\n";
-				
-				// First try - set and verify
-				std::cout << "\n1. First attempt to set bit 6...\n";
-				device->intermediateSetCapabilityBit(0x06, 0x01).get();
-				device->intermediateGetDeviceInformation().get();
 
-				// Second try - set it again
-				std::cout << "\n2. Second attempt to set bit 6...\n";
-				device->intermediateSetCapabilityBit(0x06, 0x01).get();
-				device->intermediateGetDeviceInformation().get();
-
-				// Third try - set it with a longer delay
-				std::cout << "\n3. Third attempt with delay...\n";
-				device->intermediateSetCapabilityBit(0x06, 0x01).get();
-				std::cout << "Waiting 5 seconds...\n";
-				sleep(5);
-				device->intermediateGetDeviceInformation().get();
+			case 'a':
+				{
+					// Values exactly matching spec example
+					unsigned short duration = 60;  // 0x3C
+					unsigned short value = 10;      // 5 x 100Wh = 0.5 kWh
+					unsigned char units = 0x03;    // 100Wh units
+					
+					std::cout << "Advanced Load Up initiated with spec values..." << std::endl;
+					device->intermediateSetAdvancedLoadUp(duration, value, units).get();
+				}
 				break;
-
+			
 			case 'c':
 				device->basicCriticalPeakEvent(0).get();
 				break;
-			
+
 			case 'd':
 				device->intermediateGetDeviceInformation().get();
-				break;
 
 			case 'e':
 				device->basicEndShed(0).get();

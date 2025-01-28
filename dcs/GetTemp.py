@@ -1,8 +1,7 @@
 import os
 import glob
-from time import sleep
+import time
 import datetime
-from datetime import timedelta
 import csv
 
 ########################  DEFINITIONS  ####################################
@@ -64,7 +63,7 @@ if __name__ == "__main__":
 
     device_id_1 = "28-000008e55d0d"  # WH_ALL ambient temp device ID
     device_id_2 = "28-0416c138deff"  # Cold Water temp device ID
-    device_id_3 = WH_3  # WH Hot temp device ID **UNIQUE TO EACH WH**
+    device_id_3 = WH_4  # WH Hot temp device ID **UNIQUE TO EACH WH**
 
     device_path_1 = f"/sys/bus/w1/devices/{device_id_1}/w1_slave"
     device_path_2 = f"/sys/bus/w1/devices/{device_id_2}/w1_slave"
@@ -119,15 +118,14 @@ if __name__ == "__main__":
         print('Temperature data collection will start in ' + str(round(delay / 3600, 2)) + ' hours.   ')
         print(datetime.datetime.now())
 
-        sleep(delay)
+        time.sleep(delay)
 
     for com in DRcom:
         data_name = wh_type + volume + '_TEMPDATA_' + com[0] + '.csv'
 
         i = 0
 
-        while i  < 60*24*2:# Stay in the loop for 60 seconds
-            n = datetime.datetime.now()
+        while i  < 60*24*2:  # Stay in the loop for 60 seconds
             timestamp_1, temperature_1 = read_temp(device_path_1)
             timestamp_2, temperature_2 = read_temp(device_path_2)
             timestamp_3, temperature_3 = read_temp(device_path_3)
@@ -137,8 +135,5 @@ if __name__ == "__main__":
             print(f'{timestamp_1.strftime("%H:%M:%S")} | AMBIENT: {temperature_1} F | COLD: {temperature_2} F | HOT: {temperature_3} F')
 
             i += 1
-            x = datetime.datetime.now()
-            delay = (n - x).total_seconds()
-            t = 60 + delay
+            time.sleep(57)
             write_to_csv(data_name, temp_data)
-            sleep(t)

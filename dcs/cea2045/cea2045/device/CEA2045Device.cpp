@@ -144,31 +144,40 @@ CEA2045Device::~CEA2045Device()
 
 void CEA2045Device::processRequest(cea2045MessageHeader *messageHeader)
 {
-	if (messageHeader->getLength() == 0)
-	{
-		m_processMessage->processMessageTypeSupported(m_linkLayer, messageHeader);
-	}
-	else if (messageHeader->isBasicMessage())
-	{
-		cea2045Basic *basic = (cea2045Basic *)messageHeader;
+    std::cout << "CEA2045Device::processRequest entered" << std::endl;
+    std::cout << "Message type: " << std::hex 
+              << (int)messageHeader->msgType1 << " " 
+              << (int)messageHeader->msgType2 << std::dec << std::endl;
 
-		m_processMessage->processBasicMessage(m_linkLayer, basic);
-	}
-	else if (messageHeader->isDataLinkMessage())
-	{
-		m_processMessage->processDataLinkMessage(m_linkLayer, messageHeader);
-	}
-	else if (messageHeader->isIntermediateMessage())
-	{
-		m_processMessage->processIntermediateMessage(m_linkLayer, messageHeader);
-	}
-	else
-	{
-		// TODO: fill in callbacks for other supported types
-
-		// TODO: what's the proper response if the message isn't supported?
-		m_processMessage->processInvalidMessage(m_linkLayer, messageHeader);
-	}
+    if (messageHeader->getLength() == 0)
+    {
+        std::cout << "Processing message type supported query" << std::endl;
+        m_processMessage->processMessageTypeSupported(m_linkLayer, messageHeader);
+    }
+    else if (messageHeader->isBasicMessage())
+    {
+        std::cout << "Processing basic message" << std::endl;
+        cea2045Basic *basic = (cea2045Basic *)messageHeader;
+        m_processMessage->processBasicMessage(m_linkLayer, basic);
+    }
+    else if (messageHeader->isDataLinkMessage())
+    {
+        std::cout << "Processing data link message" << std::endl;
+        m_processMessage->processDataLinkMessage(m_linkLayer, messageHeader);
+    }
+    else if (messageHeader->isIntermediateMessage())
+    {
+        std::cout << "Processing intermediate message" << std::endl;
+        cea2045Intermediate *intermediate = (cea2045Intermediate *)messageHeader;
+        std::cout << "OpCode1: 0x" << std::hex << (int)intermediate->opCode1 
+                  << " OpCode2: 0x" << (int)intermediate->opCode2 << std::dec << std::endl;
+        m_processMessage->processIntermediateMessage(m_linkLayer, messageHeader);
+    }
+    else
+    {
+        std::cout << "Processing invalid message" << std::endl;
+        m_processMessage->processInvalidMessage(m_linkLayer, messageHeader);
+    }
 }
 
 //======================================================================================
@@ -203,43 +212,50 @@ void CEA2045Device::processResponse(cea2045MessageHeader *messageHeader, Message
 
 bool CEA2045Device::processReceiveBuffer(ReceiveBuffer &receiveBuffer)
 {
-	cea2045MessageHeader *messageHeader = (cea2045MessageHeader *)receiveBuffer.getBuffer();
+    std::cout << "CEA2045Device::processReceiveBuffer entered with " 
+              << receiveBuffer.getNumBytes() << " bytes" << std::endl;
+    
+    cea2045MessageHeader *messageHeader = (cea2045MessageHeader *)receiveBuffer.getBuffer();
+    
+    if (receiveBuffer.getNumBytes() < 2) {
+        std::cout << "Message too short" << std::endl;
+        return false;
+    }
 
-	if (receiveBuffer.getNumBytes() < 2)
-		return false;
+    std::cout << "Message type: 0x" << std::hex 
+              << (int)messageHeader->msgType1 << " 0x" 
+              << (int)messageHeader->msgType2 << std::dec << std::endl;
 
-	// link layer ack/nak messages are only 2 bytes total (no length, no CRC, no payload)
-	if (receiveBuffer.getNumBytes() == 2 && messageHeader->isLinkLayerAckNak())
-	{
-		// TODO: handle link layer ack/nak
-		m_processMessage->processLinkLayerAckNak(m_linkLayer, messageHeader, MessageCode::NONE);
+    if (receiveBuffer.getNumBytes() == 2 && messageHeader->isLinkLayerAckNak())
+    {
+        std::cout << "Processing Link Layer Ack/Nak" << std::endl;
+        m_processMessage->processLinkLayerAckNak(m_linkLayer, messageHeader);
+        return true;
+    }
 
-		return true;
-	}
+    if (receiveBuffer.getNumBytes() <= sizeof(cea2045MessageHeader)) {
+        std::cout << "Message shorter than header size" << std::endl;
+        return false;
+    }
 
-	if (receiveBuffer.getNumBytes() <= sizeof(cea2045MessageHeader))
-		return false;
+    if (messageHeader->getLength() != receiveBuffer.getNumBytes() - (sizeof(cea2045MessageHeader) + 2))
+    {
+        std::cout << "Length mismatch - expected: " << messageHeader->getLength()
+                  << " actual: " << (receiveBuffer.getNumBytes() - (sizeof(cea2045MessageHeader) + 2))
+                  << std::endl;
+        return false;
+    }
 
-	// check for a complete message received
-	// length does not include the message header or the 2 byte crc
-	if (messageHeader->getLength() != receiveBuffer.getNumBytes() - (sizeof(cea2045MessageHeader) + 2))
-	{
-		return false;
-	}
+    if (!Checksum::validate(receiveBuffer.getBuffer(), receiveBuffer.getNumBytes()))
+    {
+        std::cout << "Checksum validation failed" << std::endl;
+        m_linkLayer->sendLinkLayerNak(LinkLayerNakCode::CHECKSUM_ERROR);
+        return true;
+    }
 
-	// a complete message was received
-
-	if (!Checksum::validate(receiveBuffer.getBuffer(), receiveBuffer.getNumBytes()))
-	{
-		m_linkLayer->sendLinkLayerNak(LinkLayerNakCode::CHECKSUM_ERROR);
-
-		return true;
-	}
-
-	// we have a complete message with a valid crc
-	processRequest(messageHeader);
-
-	return true;
+    std::cout << "Processing message..." << std::endl;
+    processRequest(messageHeader);
+    return true;
 }
 
 //======================================================================================
@@ -479,6 +495,8 @@ bool CEA2045Device::shuttingDown()
 
 std::future<ResponseCodes> CEA2045Device::queueRequest(Message *request)
 {
+
+	std::cout << "Queueing message with code: " << static_cast<int>(request->getMessageCode()) << std::endl;
 	return m_requestHandler.queueRequest(std::unique_ptr<Message>(request));
 }
 

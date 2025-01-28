@@ -130,7 +130,7 @@ public:
 	virtual std::future<ResponseCodes> intermediateGetTemperatureOffset() = 0;
 	virtual std::future<ResponseCodes> intermediateGetSetPoint() = 0;
 	virtual std::future<ResponseCodes> intermediateGetPresentTemperature() = 0;
-	virtual std::future<ResponseCodes> intermediateSetCapabilityBit(unsigned char capabilityBit, unsigned char setValue) = 0;
+
 	virtual std::future<ResponseCodes> intermediateSetTemperatureOffset(unsigned char temperatureOffset, TemperatureUnits units) = 0;
 	virtual std::future<ResponseCodes> intermediateSetSetpoints(unsigned short deviceType, TemperatureUnits units, unsigned short setpoint1, unsigned short setpoint2) = 0;
 	virtual std::future<ResponseCodes> intermediateSetEnergyPrice(unsigned short currentPrice, unsigned short currencyCode,
@@ -151,6 +151,12 @@ public:
 	virtual std::future<ResponseCodes> basicQueryOperationalState() = 0;
 	virtual std::future<ResponseCodes> basicShed(unsigned char eventDuration) = 0;
 	virtual std::future<ResponseCodes> basicPowerLevel(unsigned char powerLevel) = 0;
+	
+	
+	virtual std::future<ResponseCodes> intermediateSetAdvancedLoadUp(
+    unsigned short duration,
+    unsigned short value,
+    unsigned char units) = 0;
 };
 
 } /* namespace cea2045 */

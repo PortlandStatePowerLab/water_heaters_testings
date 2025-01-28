@@ -125,13 +125,11 @@ public:
 
 	virtual ~CEA2045DeviceUCM();
 
-    std::future<ResponseCodes> intermediateSetCapabilityBit(unsigned char capabilityBit, unsigned char setValue);
-    std::future<ResponseCodes> intermediateGetDeviceInformation();
+	std::future<ResponseCodes> intermediateGetDeviceInformation();
 	std::future<ResponseCodes> intermediateGetCommodity();
 	std::future<ResponseCodes> intermediateGetTemperatureOffset();
 	std::future<ResponseCodes> intermediateGetSetPoint();
 	std::future<ResponseCodes> intermediateGetPresentTemperature();
-	
 
 	std::future<ResponseCodes> intermediateSetTemperatureOffset(unsigned char temperatureOffset, TemperatureUnits units);
 	std::future<ResponseCodes> intermediateSetSetpoints(unsigned short deviceType, TemperatureUnits units, unsigned short setpoint1, unsigned short setpoint2);
@@ -160,6 +158,11 @@ public:
 
 	std::future<ResponseCodes> querySuportDataLinkMessages();
 	std::future<ResponseCodes> querySuportIntermediateMessages();
+
+	virtual std::future<ResponseCodes> intermediateSetAdvancedLoadUp(
+        unsigned short duration,
+        unsigned short value,
+        unsigned char units) override;
 
 	bool start();
 	void shutDown();

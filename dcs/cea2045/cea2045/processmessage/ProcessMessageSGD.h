@@ -110,20 +110,29 @@ namespace cea2045 {
 
 class ProcessMessageSGD : public IProcessMessage
 {
+private:
+    unsigned char m_currentState; // Tracks current operational state
+
 public:
-	ProcessMessageSGD();
-	virtual ~ProcessMessageSGD();
+    ProcessMessageSGD();
+    virtual ~ProcessMessageSGD();
 
-	virtual void processLinkLayerAckNak(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) {};
-
-	virtual void processMessageTypeSupported(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) {};
-
-	virtual void processBasicMessage(ILinkLayerCommSend *linkLayer, cea2045Basic *basic) {};
-	virtual void processIntermediateMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) {};
-
-	virtual void processDataLinkMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) {};
-
-	virtual void processInvalidMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) {};
+    virtual void processLinkLayerAckNak(ILinkLayerCommSend *linkLayer, 
+                                      cea2045MessageHeader *message,
+                                      MessageCode messageCode = MessageCode::NONE) override;
+    virtual void processMessageTypeSupported(ILinkLayerCommSend *linkLayer, 
+                                           cea2045MessageHeader *message) override;
+    virtual void processBasicMessage(ILinkLayerCommSend *linkLayer, 
+                                   cea2045Basic *basic) override;
+    virtual void processIntermediateMessage(ILinkLayerCommSend *linkLayer, 
+                                          cea2045MessageHeader *message) override;
+    virtual void processDataLinkMessage(ILinkLayerCommSend *linkLayer, 
+                                      cea2045MessageHeader *message) override;
+    virtual void processInvalidMessage(ILinkLayerCommSend *linkLayer, 
+                                     cea2045MessageHeader *message) override;
+    virtual void processIncompleteMessage(ILinkLayerCommSend *linkLayer, 
+                                        const unsigned char *buffer, 
+                                        unsigned int numBytes) override;
 };
 
 } /* namespace cea2045 */

@@ -117,20 +117,25 @@ namespace cea2045 {
 
 class IProcessMessage {
 public:
-	IProcessMessage() {};
-	virtual ~IProcessMessage() {};
+    IProcessMessage() {};
+    virtual ~IProcessMessage() {};
 
-	virtual void processLinkLayerAckNak(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message, MessageCode messageCode) = 0;
-
-	virtual void processMessageTypeSupported(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) = 0;
-
-	virtual void processBasicMessage(ILinkLayerCommSend *linkLayer, cea2045Basic *basic) = 0;
-	virtual void processIntermediateMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) = 0;
-	virtual void processDataLinkMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) = 0;
-
-	virtual void processInvalidMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message) = 0;
-
-	virtual void processIncompleteMessage(ILinkLayerCommSend *linkLayer, const unsigned char *buffer, unsigned int numBytes) = 0;
+    virtual void processLinkLayerAckNak(ILinkLayerCommSend *linkLayer, 
+                                      cea2045MessageHeader *message, 
+                                      MessageCode messageCode = MessageCode::NONE) = 0;
+    virtual void processMessageTypeSupported(ILinkLayerCommSend *linkLayer, 
+                                           cea2045MessageHeader *message) = 0;
+    virtual void processBasicMessage(ILinkLayerCommSend *linkLayer, 
+                                   cea2045Basic *basic) = 0;
+    virtual void processIntermediateMessage(ILinkLayerCommSend *linkLayer, 
+                                          cea2045MessageHeader *message) = 0;
+    virtual void processDataLinkMessage(ILinkLayerCommSend *linkLayer, 
+                                      cea2045MessageHeader *message) = 0;
+    virtual void processInvalidMessage(ILinkLayerCommSend *linkLayer, 
+                                     cea2045MessageHeader *message) = 0;
+    virtual void processIncompleteMessage(ILinkLayerCommSend *linkLayer, 
+                                        const unsigned char *buffer, 
+                                        unsigned int numBytes) = 0;
 };
 
 } /* namespace cea2045 */

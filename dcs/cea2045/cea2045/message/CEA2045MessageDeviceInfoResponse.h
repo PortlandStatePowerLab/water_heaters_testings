@@ -105,8 +105,6 @@
 #define CEA2045MESSAGEDEVICEINFORESPONSE_H_
 
 #include "CEA2045MessageMacros.h"
-#include <cstddef>
-#include <iostream>
 
 namespace cea2045 {
 
@@ -123,7 +121,6 @@ struct cea2045DeviceInfoResponse
 	unsigned short deviceType;
 	unsigned char deviceRevision[2];
 	unsigned char capability[4];
-	unsigned char capability6[6];
 	unsigned char reserved1;
 	unsigned char modelNumber[16];
 	unsigned char serialNumber[16];
@@ -143,14 +140,6 @@ struct cea2045DeviceInfoResponse
 	{
 		return be16toh(deviceType);
 	}
-
-	unsigned short getBitmapCapbility()
-    {
-        // Instead of just printing, let's actually check bit 6 for Advanced Load Up
-        unsigned char advancedLoadUpBit = (capability6[0] & 0x40) >> 6; // Bit 6 for Advanced Load Up
-        std::cout << "Advanced Load Up capability: " << (advancedLoadUpBit ? "Enabled" : "Disabled") << std::endl;
-        return advancedLoadUpBit;
-    }
 
 	MACRO_LENGTH
 	MACRO_CHECKSUM

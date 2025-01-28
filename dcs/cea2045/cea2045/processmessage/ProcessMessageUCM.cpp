@@ -103,7 +103,8 @@
 
 #include "ProcessMessageUCM.h"
 #include "../util/Checksum.h"
-
+#include <iostream>
+#include <iomanip>
 namespace cea2045 {
 
 ProcessMessageUCM::ProcessMessageUCM(IUCM *ucm) :
@@ -121,16 +122,21 @@ ProcessMessageUCM::~ProcessMessageUCM()
 
 void ProcessMessageUCM::processLinkLayerAckNak(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message, MessageCode messageCode)
 {
-	if (message->msgType1 == LINK_LAYER_ACK_MSG_TYP1)
-	{
-		m_ucm->processAckReceived(messageCode);
-	}
-	else
-	{
-		LinkLayerNakCode nak = ConvertEnums::convertLinkLayerNak(message->msgType2);
-
-		m_ucm->processNakReceived(nak, messageCode);
-	}
+    std::cout << "ProcessMessageUCM::processLinkLayerAckNak - messageCode: " 
+              << static_cast<int>(messageCode) << std::endl;
+    
+    if (message->msgType1 == LINK_LAYER_ACK_MSG_TYP1)
+    {
+        std::cout << "Processing ACK" << std::endl;
+        m_ucm->processAckReceived(messageCode);
+    }
+    else
+    {
+        std::cout << "Processing NAK - code: 0x" << std::hex 
+                  << (int)message->msgType2 << std::dec << std::endl;
+        LinkLayerNakCode nak = ConvertEnums::convertLinkLayerNak(message->msgType2);
+        m_ucm->processNakReceived(nak, messageCode);
+    }
 }
 
 //======================================================================================
@@ -204,239 +210,215 @@ void ProcessMessageUCM::processBasicMessage(ILinkLayerCommSend *linkLayer, cea20
 			break;
 	}
 }
+//======================================================================================
+
+void ProcessMessageUCM::processDeviceInfoResponse(cea2045DeviceInfoResponse *message)
+{
+    // Helper function to check Advanced Load Up support
+    auto isAdvancedLoadUpSupported = [](uint32_t capabilities) -> bool {
+        return (capabilities & (1 << 6)) != 0;
+    };
+
+    // Calculate capabilities bitmap
+    uint32_t capabilities = (message->capability[0] << 24) |
+                           (message->capability[1] << 16) |
+                           (message->capability[2] << 8) |
+                           message->capability[3];
+                           
+    std::cout << "Checking Advanced Load Up support..." << std::endl;
+    std::cout << "Raw capability bytes: " 
+              << std::hex 
+              << (int)message->capability[0] << " "
+              << (int)message->capability[1] << " "
+              << (int)message->capability[2] << " "
+              << (int)message->capability[3] << std::dec << std::endl;
+    std::cout << "Advanced Load Up bit: " << (isAdvancedLoadUpSupported(capabilities) ? "SET" : "NOT SET") << std::endl;
+}
 
 //======================================================================================
 
 void ProcessMessageUCM::processIntermediateMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message)
 {
-    std::cout << "Received Intermediate message:\n"
-              << "  msgType1: 0x" << std::hex << (int)message->msgType1 << "\n"
-              << "  msgType2: 0x" << std::hex << (int)message->msgType2 << "\n"
-              << "  length: 0x" << std::hex << message->getLength() << std::endl;
-
     if (!m_ucm->isMessageTypeSupported(MessageTypeCode::INTERMEDIATE))
     {
-        std::cout << "Intermediate messages not supported" << std::endl;
         linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
         return;
     }
-	// if (!m_ucm->isMessageTypeSupported(MessageTypeCode::INTERMEDIATE))
-	// {
-	// 	linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
-	// 	return;
-	// }
 
-	cea2045Intermediate *intermediate = (cea2045Intermediate *)message;
+    cea2045Intermediate *intermediate = (cea2045Intermediate *)message;
+    unsigned short intermediateType = *((unsigned short *)(&(intermediate->opCode1)));
+    IntermediateTypeCode intermediateTypeCode = ConvertEnums::convertIntermediateType(intermediateType);
 
-	unsigned short intermediateType = *((unsigned short *)(&(intermediate->opCode1)));
+    std::cout << "ProcessMessageUCM::processIntermediateMessage:" << std::endl
+              << "  opCode1: 0x" << std::hex << (int)intermediate->opCode1
+              << "  opCode2: 0x" << (int)intermediate->opCode2 << std::dec << std::endl;
 
-	IntermediateTypeCode intermediateTypeCode = ConvertEnums::convertIntermediateType(intermediateType);
+    switch (intermediateTypeCode)
+    {
+        case IntermediateTypeCode::GET_UTC_TIME_REQUEST:
+        {
+            if (message->getLength() == 2)
+            {
+                linkLayer->sendLinkLayerAck();
+                cea2045GetUTCTimeResponse response;
+                response.utcSeconds = 0;
+                response.timezoneOffsetQuarterHours = 0;
+                response.dstOffsetQuarterHours = 0;
+                m_ucm->processGetUTCTimeResponse(&response);
+                response.msgType1 = INTERMEDIATE_MSG_TYP1;
+                response.msgType2 = INTERMEDIATE_MSG_TYP2;
+                response.setLength();
+                response.opCode1 = GET_UTC_TIME;
+                response.opCode2 = OP_CODE2_REPLY;
+                response.responseCode = OP_CODE2_REPLY;
+                response.setChecksum();
+                linkLayer->sendResponse((unsigned char*)&response, sizeof(response));
+            }
+            else
+            {
+                linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
+            }
+            break;
+        }
 
-	switch (intermediateTypeCode)
-	{
-		case IntermediateTypeCode::GET_UTC_TIME_REQUEST:
-		{
-			if (message->getLength() == 2)
-			{
-				linkLayer->sendLinkLayerAck();
+        case IntermediateTypeCode::INFO_RESPONSE:
+        {
+            cea2045DeviceInfoResponse *infoResponse = (cea2045DeviceInfoResponse *)message;
+            m_ucm->processDeviceInfoResponse(infoResponse);
+            linkLayer->sendLinkLayerAck();
+            break;
+        }
 
-				cea2045GetUTCTimeResponse response;
+        case IntermediateTypeCode::COMMODITY_RESPONSE:
+        {
+            std::cout << "Processing Commodity Response" << std::endl;
+            cea2045CommodityResponse *commodityResponse = (cea2045CommodityResponse *)message;
+            m_ucm->processCommodityResponse(commodityResponse);
+            linkLayer->sendLinkLayerAck();
+            break;
+        }
 
-				response.utcSeconds = 0;
-				response.timezoneOffsetQuarterHours = 0;
-				response.dstOffsetQuarterHours = 0;
+        case IntermediateTypeCode::SET_ENERGY_PRICE_RESPONSE:
+        {
+            cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
+            m_ucm->processSetEnergyPriceResponse(intermediateResponse);
+            linkLayer->sendLinkLayerAck();
+            break;
+        }
 
-				m_ucm->processGetUTCTimeResponse(&response);
+        case IntermediateTypeCode::GET_SET_TEMPERATURE_OFFSET_RESPONSE:
+        {
+            if (message->getLength() + 6 == sizeof(cea2045IntermediateResponse))
+            {
+                cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
+                m_ucm->processSetTemperatureOffsetResponse(intermediateResponse);
+            }
+            else if (message->getLength() + 6 == sizeof(cea2045GetTemperateOffsetResponse))
+            {
+                cea2045GetTemperateOffsetResponse *getTemperateOffsetResponse = (cea2045GetTemperateOffsetResponse *)message;
+                m_ucm->processGetTemperatureOffsetResponse(getTemperateOffsetResponse);
+            }
+            linkLayer->sendLinkLayerAck();
+            break;
+        }
 
-				response.msgType1 = INTERMEDIATE_MSG_TYP1;
-				response.msgType2 = INTERMEDIATE_MSG_TYP2;
-				response.setLength();
-				response.opCode1 = GET_UTC_TIME;
-				response.opCode2 = OP_CODE2_REPLY;
-				response.responseCode = OP_CODE2_REPLY;
+        case IntermediateTypeCode::ADVANCED_LOAD_UP_RESPONSE:
+        {
+            if (intermediate->opCode1 == 0x0C && (intermediate->opCode2 & 0x80)) {
+                cea2045IntermediateResponse *response = (cea2045IntermediateResponse *)message;
+                std::cout << "Advanced Load Up Response - Code: 0x" << std::hex
+                          << (int)response->responseCode << std::dec << std::endl;
+                
+                switch(response->responseCode) {
+                    case 0x00: 
+                        std::cout << "Success" << std::endl; 
+                        break;
+                    case 0x01: 
+                        std::cout << "Command not implemented" << std::endl; 
+                        break;
+                    case 0x02: 
+                        std::cout << "Bad Value - Check duration/value/units" << std::endl;
+                        std::cout << "Recommended values:" << std::endl;
+                        std::cout << "  Duration: 60 minutes" << std::endl;
+                        std::cout << "  Value: 5 (0.5 kWh)" << std::endl;
+                        std::cout << "  Units: 0x02 (100Wh)" << std::endl;
+                        break;
+                    case 0x03: 
+                        std::cout << "Command Length Error" << std::endl; 
+                        break;
+                    case 0x04: 
+                        std::cout << "Response Length Error" << std::endl; 
+                        break;
+                    case 0x05: 
+                        std::cout << "Busy" << std::endl; 
+                        break;
+                    case 0x06: 
+                        std::cout << "Other Error" << std::endl; 
+                        break;
+                    default: 
+                        std::cout << "Unknown response code" << std::endl; 
+                        break;
+                }
+            }
+            linkLayer->sendLinkLayerAck();
+            break;
+        }
 
-				response.setChecksum();
-
-				linkLayer->sendResponse((unsigned char*)&response, sizeof(response));
-			}
-			else
-			{
-				linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
-			}
-
-			break;
-		}
-
-		case IntermediateTypeCode::SET_CAPABILITY_BIT_MESSAGE:
-		{
-			std::cout << "Received SetCapabilityBit response with length: " 
-					<< message->getLength() << std::endl;
-					
-			cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
-			std::cout << "Response details:\n"
-					<< "  opCode1: 0x" << std::hex << (int)intermediateResponse->opCode1 << "\n"
-					<< "  opCode2: 0x" << std::hex << (int)intermediateResponse->opCode2 << "\n"
-					<< "  responseCode: 0x" << std::hex << (int)intermediateResponse->responseCode << std::endl;
-			
-			m_ucm->processSetCapabilityBitResponse(intermediateResponse);
-			linkLayer->sendLinkLayerAck();
-			break;
-		}
-
-		case IntermediateTypeCode::INFO_RESPONSE:
-		{
-			cea2045DeviceInfoResponse *infoResponse = (cea2045DeviceInfoResponse *)message;
-
-			m_ucm->processDeviceInfoResponse(infoResponse);
-
-			linkLayer->sendLinkLayerAck();
-
-			break;
-		}
-
-		case IntermediateTypeCode::COMMODITY_RESPONSE:
-		{
-			cea2045CommodityResponse *commodityResponse = (cea2045CommodityResponse *)message;
-
-			m_ucm->processCommodityResponse(commodityResponse);
-
-			linkLayer->sendLinkLayerAck();
-
-			break;
-		}
-
-		case IntermediateTypeCode::SET_ENERGY_PRICE_RESPONSE:
-		{
-			cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
-
-			m_ucm->processSetEnergyPriceResponse(intermediateResponse);
-
-			linkLayer->sendLinkLayerAck();
-
-			break;
-		}
-
-		case IntermediateTypeCode::GET_SET_TEMPERATURE_OFFSET_RESPONSE:
-		{
-			if (message->getLength() + 6 == sizeof(cea2045IntermediateResponse))
-			{
-				cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
-
-				m_ucm->processSetTemperatureOffsetResponse(intermediateResponse);
-
-			}
-			else if (message->getLength() + 6 == sizeof(cea2045GetTemperateOffsetResponse))
-			{
-				cea2045GetTemperateOffsetResponse *getTemperateOffsetResponse = (cea2045GetTemperateOffsetResponse *)message;
-
-				m_ucm->processGetTemperatureOffsetResponse(getTemperateOffsetResponse);
-			}
-			else
-			{
-
-			}
-
-			linkLayer->sendLinkLayerAck();
-
-			break;
-		}
-
-		case IntermediateTypeCode::GET_SET_SETPOINT_RESPONSE:
-		{
-			if (message->getLength() + 6 == sizeof(cea2045IntermediateResponse))
-			{
-				cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
-
-				m_ucm->processSetSetpointsResponse(intermediateResponse);
-
-				linkLayer->sendLinkLayerAck();
-			}
-			else if (message->getLength() + 6 == sizeof(cea2045GetSetpointsResponse2))
-			{
-				cea2045GetSetpointsResponse2 *setpointsResponse = (cea2045GetSetpointsResponse2 *)message;
-
-				m_ucm->processGetSetpointsResponse(setpointsResponse);
-
-				linkLayer->sendLinkLayerAck();
-			}
-			else if (message->getLength() + 6 == sizeof(cea2045GetSetpointsResponse1))
-			{
-				cea2045GetSetpointsResponse1 *setpointsResponse = (cea2045GetSetpointsResponse1 *)message;
-
-				m_ucm->processGetSetpointsResponse(setpointsResponse);
-
-				linkLayer->sendLinkLayerAck();
-			}
-
-			break;
-		}
-
-
-			case IntermediateTypeCode::GET_SET_ADVANCEDLOADUP_RESPONSE:
-		{
-			if (message->getLength() + 6 == sizeof(cea2045IntermediateResponse))
-			{
-				cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
-
-				m_ucm->processSetAdvancedLoadUpResponse(intermediateResponse);
-
-				linkLayer->sendLinkLayerAck();
-			}
-			else if (message->getLength() + 6 == sizeof(cea2045GetAdvancedLoadUpResponse))
-			{
-				cea2045GetAdvancedLoadUpResponse *AdvancedLoadUpResponse = (cea2045GetAdvancedLoadUpResponse *)message;
-
-				m_ucm->processGetAdvancedLoadUpResponse(AdvancedLoadUpResponse);
-
-				linkLayer->sendLinkLayerAck();
-			}
-
-			break;
-		}
-
-
-		case IntermediateTypeCode::GET_PRESENT_TEMPERATURE_RESPONSE:
-		{
-			cea2045GetPresentTemperatureResponse *getPresentTemperature = (cea2045GetPresentTemperatureResponse *)message;
-
-			m_ucm->processGetPresentTemperatureResponse(getPresentTemperature);
-
-			linkLayer->sendLinkLayerAck();
-
-			break;
-		}
-
-		case IntermediateTypeCode::START_CYCLING_RESPONSE:
-		{
-			cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
-
-			m_ucm->processStartCyclingResponse(intermediateResponse);
-
-			linkLayer->sendLinkLayerAck();
-
-			break;
-		}
-
-		case IntermediateTypeCode::TERMINATE_CYCLING_RESPONSE:
-		{
-			cea2045IntermediateResponse *intermediateResponse = (cea2045IntermediateResponse *)message;
-
-			m_ucm->processTerminateCyclingResponse(intermediateResponse);
-
-			linkLayer->sendLinkLayerAck();
-
-			break;
-		}
-
-		default:
-			std::cout << "Unhandled intermediate message type: 0x" 
-                     << std::hex << intermediateType << std::endl;
+        default:
             linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
             break;
-			// linkLayer->sendLinkLayerNak(LinkLayerNakCode::REQUEST_NOT_SUPPORTED);
-			// break;
-	}
+    }
 }
+
+// void ProcessMessageUCM::processIntermediateMessage(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message)
+// {
+//     cea2045Intermediate *intermediate = (cea2045Intermediate *)message;
+   
+//     std::cout << "ProcessMessageUCM::processIntermediateMessage:" << std::endl
+//               << "  opCode1: 0x" << std::hex << (int)intermediate->opCode1
+//               << "  opCode2: 0x" << (int)intermediate->opCode2 << std::dec << std::endl;
+   
+//     if (intermediate->opCode1 == 0x0C && (intermediate->opCode2 & 0x80)) {
+//         // This is an Advanced Load Up response
+//         cea2045IntermediateResponse *response = (cea2045IntermediateResponse *)message;
+//         std::cout << "Advanced Load Up Response - Code: 0x" << std::hex
+//                   << (int)response->responseCode << std::dec << std::endl;
+       
+//         switch(response->responseCode) {
+//             case 0x00: 
+//                 std::cout << "Success" << std::endl; 
+//                 break;
+//             case 0x01: 
+//                 std::cout << "Command not implemented" << std::endl; 
+//                 break;
+//             case 0x02: 
+//                 std::cout << "Bad Value - Check duration/value/units" << std::endl;
+//                 std::cout << "Recommended values:" << std::endl;
+//                 std::cout << "  Duration: 60 minutes" << std::endl;
+//                 std::cout << "  Value: 5 (0.5 kWh)" << std::endl;
+//                 std::cout << "  Units: 0x02 (100Wh)" << std::endl;
+//                 std::cout << "  SuggestedEfficiency: 7-9 for high efficiency" << std::endl;
+//                 break;
+//             case 0x03: 
+//                 std::cout << "Command Length Error" << std::endl; 
+//                 break;
+//             case 0x04: 
+//                 std::cout << "Response Length Error" << std::endl; 
+//                 break;
+//             case 0x05: 
+//                 std::cout << "Busy" << std::endl; 
+//                 break;
+//             case 0x06: 
+//                 std::cout << "Other Error" << std::endl; 
+//                 break;
+//             default: 
+//                 std::cout << "Unknown response code" << std::endl; 
+//                 break;
+//         }
+//     }
+   
+//     linkLayer->sendLinkLayerAck();
+// }
 
 //======================================================================================
 
