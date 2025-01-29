@@ -153,7 +153,7 @@ int main()
 					// Values exactly matching spec example
 					unsigned short duration = 60;  // 0x3C
 					unsigned short value = 10;      // 5 x 100Wh = 0.5 kWh
-					unsigned char units = 0x03;    // 100Wh units
+					unsigned char units = 0x03;    // 1000Wh units
 					
 					std::cout << "Advanced Load Up initiated with spec values..." << std::endl;
 					device->intermediateSetAdvancedLoadUp(duration, value, units).get();

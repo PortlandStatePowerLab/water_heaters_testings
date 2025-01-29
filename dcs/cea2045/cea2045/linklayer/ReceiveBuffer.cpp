@@ -133,14 +133,14 @@ int ReceiveBuffer::read(ICommunicationPort *port, unsigned int waitMS)
 
     int bytesRead = port->recv(m_buffer + m_numBytes, m_bufferLength - m_numBytes, waitMS);
     if (bytesRead > 0) {
-        std::cout << "ReceiveBuffer received " << bytesRead << " bytes:" << std::endl;
-        std::cout << "Current buffer contents (" << m_numBytes + bytesRead << " total bytes):" << std::endl;
-        for(unsigned int i = 0; i < m_numBytes + bytesRead; i++) {
-            std::cout << std::hex << std::setw(2) << std::setfill('0') 
-                     << (int)m_buffer[i] << " ";
-            if((i + 1) % 8 == 0) std::cout << std::endl;
-        }
-        std::cout << std::dec << std::endl;
+        // std::cout << "ReceiveBuffer received " << bytesRead << " bytes:" << std::endl;
+        // std::cout << "Current buffer contents (" << m_numBytes + bytesRead << " total bytes):" << std::endl;
+        // for(unsigned int i = 0; i < m_numBytes + bytesRead; i++) {
+        //     std::cout << std::hex << std::setw(2) << std::setfill('0') 
+        //              << (int)m_buffer[i] << " ";
+        //     if((i + 1) % 8 == 0) std::cout << std::endl;
+        // }
+        // std::cout << std::dec << std::endl;
         
         m_numBytes += bytesRead;
     }

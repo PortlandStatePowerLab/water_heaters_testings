@@ -496,7 +496,7 @@ bool CEA2045Device::shuttingDown()
 std::future<ResponseCodes> CEA2045Device::queueRequest(Message *request)
 {
 
-	std::cout << "Queueing message with code: " << static_cast<int>(request->getMessageCode()) << std::endl;
+	// std::cout << "Queueing message with code: " << static_cast<int>(request->getMessageCode()) << std::endl;
 	return m_requestHandler.queueRequest(std::unique_ptr<Message>(request));
 }
 

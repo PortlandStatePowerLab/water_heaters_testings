@@ -122,18 +122,18 @@ ProcessMessageUCM::~ProcessMessageUCM()
 
 void ProcessMessageUCM::processLinkLayerAckNak(ILinkLayerCommSend *linkLayer, cea2045MessageHeader *message, MessageCode messageCode)
 {
-    std::cout << "ProcessMessageUCM::processLinkLayerAckNak - messageCode: " 
-              << static_cast<int>(messageCode) << std::endl;
+    // std::cout << "ProcessMessageUCM::processLinkLayerAckNak - messageCode: " 
+    //           << static_cast<int>(messageCode) << std::endl;
     
     if (message->msgType1 == LINK_LAYER_ACK_MSG_TYP1)
     {
-        std::cout << "Processing ACK" << std::endl;
+        // std::cout << "Processing ACK" << std::endl;
         m_ucm->processAckReceived(messageCode);
     }
     else
     {
-        std::cout << "Processing NAK - code: 0x" << std::hex 
-                  << (int)message->msgType2 << std::dec << std::endl;
+        // std::cout << "Processing NAK - code: 0x" << std::hex 
+        //           << (int)message->msgType2 << std::dec << std::endl;
         LinkLayerNakCode nak = ConvertEnums::convertLinkLayerNak(message->msgType2);
         m_ucm->processNakReceived(nak, messageCode);
     }

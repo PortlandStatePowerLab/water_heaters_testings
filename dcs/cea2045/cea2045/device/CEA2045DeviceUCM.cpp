@@ -173,7 +173,7 @@ std::future<ResponseCodes> CEA2045DeviceUCM::intermediateSetAdvancedLoadUp(
     unsigned short value,
     unsigned char units)
 {
-    std::cout << "CEA2045DeviceUCM::intermediateSetAdvancedLoadUp called" << std::endl;
+    // std::cout << "CEA2045DeviceUCM::intermediateSetAdvancedLoadUp called" << std::endl;
     auto setAdvancedLoadUp = new SetAdvancedLoadUp(
         duration,
         value,

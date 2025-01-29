@@ -125,13 +125,13 @@ LinkLayerCommImpl::~LinkLayerCommImpl()
 
 int LinkLayerCommImpl::send(const unsigned char* buffer, int length)
 {
-    std::cout << "LinkLayerCommImpl::send - Full message dump:" << std::endl;
-    for(int i = 0; i < length; i++) {
-        std::cout << std::hex << std::setw(2) << std::setfill('0') 
-                  << (int)buffer[i] << " ";
-        if((i + 1) % 8 == 0) std::cout << std::endl;
-    }
-    std::cout << std::dec << std::endl;
+    // std::cout << "LinkLayerCommImpl::send - Full message dump:" << std::endl;
+    // for(int i = 0; i < length; i++) {
+    //     std::cout << std::hex << std::setw(2) << std::setfill('0') 
+    //               << (int)buffer[i] << " ";
+    //     if((i + 1) % 8 == 0) std::cout << std::endl;
+    // }
+    // std::cout << std::dec << std::endl;
     
     return m_communicationPort->send(buffer, length);
 }
