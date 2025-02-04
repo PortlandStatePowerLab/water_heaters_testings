@@ -1,99 +1,86 @@
-## Current Water Heaters Installed:
-- WH 1: State HPWH
-- WH 2: Rheem HPWH
-- WH 3: AO Smith 2 HPWH
-- WH 4: AO Smith 1 HPWH
-### Requirements:
-NOTE: The water draw scripts are compatible with Python2.
+## Implementing AdvancedLoadUp in CTA-2045-B-Enabled Water Heaters
 
-- Update the Raspberry Pi Libraries:
-    - ```sudo apt update```
-    - ```sudo apt upgrade```
-    - ```sudo apt install vim```
-    - ```sudo apt install tmux```
+This brief guide explains the changes made to the CTA-2045 source code in order to enable the AdvancedLoadUp command (ALU) functionality. ALU allows water heaters to store extra energy beyond their normal operation when useful to grid operation (Refer to CTA-2045-B documentation)
 
-- Install WiringPi:
-    - ``` wget https://project-downloads.drogon.net/wiringpi-latest.deb```
-    - ``` sudo dpkg -i wiringpi-latest.deb```
+## Prerequisites:
 
-- If you get a warning that looks like...
-    - ```WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!```
-    - Use the following ssh line to remove the offending key:
-    - ```ssh-keygen -R <RPI ip address>```
-    - You should be able to log in without issue after entering this line.
+    - CTA-2045-B-enabled Water Heater (any other storage device mentioned in the CTA-2045-B document)
+    - Follow the safety precautions highlighted within the CTA-2045-B documentation
+    - ALU increases the setpoint temperature, so care must be taken!
 
-### Conformance Test Procedure
-NOTE: The following scripts will run from three windows via TMUX.
-It is important to run programs from RPI desktop so that they may
-run continuously. Running programs from SSH may have issues with
-continuous connectivity.
+## tl;dr
 
-Three scripts need to run simultaneously to collect all necessary data
-for Conformance testing. Conformance testing runs for 48 hours. The first
-24 hours will use a draw profile. The second 24 hours, the WH will idle.
+To implement the ALU functionality, do the following steps:
 
-There are 
+1. Clone this repository.
+2. Checkout the ALU branch.
+3. Go to ```/dcs/sample2/sample2/``` and open the ```main.cpp``` file.
+4. Ensure the correct serial port is specificed in line 116.
+5. Go to ```/dcs/```, type ```mkdir -p build/debug```.
+6. Go to the newly created debug folder: ```cd build/debug/```
+7. In your terminal, type ```cmake -DCMAKE_BUILD_TYPE=Debug -DSAMPLE=1 -DTEST=1 ../../```
+8. Type ```make```.
 
-The following are the three scripts and run procedures:
-- TMUX - running programs from one terminal
-      - On the RPI Desktop, open a window and run TMUX. You will need to create three
-      separate windows to run the three programs.
+## Implementation Steps
 
-      - ```tmux```
+The Advanced Load Up functionality is not created or set at all in the source code, so we need to set it up from scratch.
+
+1. Create Message Classes in this directory ```cea2045/device/message/```:
+
+    - Create the following two files:
+
+        - SetAdvancedLoadUp.h
+        - SetAdvancedLoadUp.cpp
+
+2. Update the Device Interface:
+
+    - Update the ```CEA2045DeviceUCM.h``` file in ```cea2045/device``` directory as shown in this repository.
   
-      -ctrl+b, %
-  
-      -ctrl+b, "
-  
-      - To move from window to window: cntrol+b, <up> or <down> or <left> or <right>
-      - To close out tmux: ctrl+b, :kill-session
-  
-- Commodity Service - Collecting WH data from the commodity read
-    - Conformance commodity service initiates data collection for any desired mode.
-    At the start of the program, you will enter the WH Brand (if it is a HP, write
-    HP after brand name), tank volume, and which service you would like to run for
-    48 hours each. The data will be collected in the log.csv file as long as it
-    is running.
-      
-      -```cd water_heaters_testings/dcs/build/debug```
-      
-      -```python3 StartCommodity.py```
-      
-- Draw Profile - Running a 24-hr draw schedule for each service
-    - The draw profile is used to run scheduled water draws by reading CSV files
-    The draw controller program has three inputs for draw schedules:
-      -Daily draw schedule (Use this one to run the test)
-      -Cold water dump, peripheral (Use this one to initialize the cold water
-      temperature for an auxiliary WH)
-      - Test program (create a sample CSV file to ensure all programs are functioning)
-      
-      -```cd water_heaters_testings_/controller```
-      
-      -```./StartDrawSchedule.sh```
-      
-      - Choose which profile you would like to run.
+3. Implement the message handler:
 
-- Temperature Sensors - Collecting ambient, cold water, and hot water temperatures
-    - Three temperatures are collected. You will need to run one temperature script
-    to collect all three. The temperature data will be saved to the templog directory.
-
-    -```cd water_heaters_testings/dcs```
-  
-    -```python3 GetTemp.py```
+    - Update the ```processIntermediateMessage()``` function within the ```cea2045/processmessage/ProcessMessageUCM.cpp``` file as shown in this repository.
 
 
-### If the heartbeat is not working on the DCM or the testbench RPI:
-Check the serial port connections. You can change where serial0 is pointing by
-going to the main.cpp file in water_heaters_testings/dcs/sample2/sample2/main.cpp
-If you update this pointer, you will need to recompile from the dcs repo again and recreate
-and make the build/debug directories.
+## Usage
 
-- DCM --> serial0 should be pointing to AMA0
-  - If there is still an issue, make sure the RPI README. In particular,
-  make sure to read through the following:
+Implement the case letter for your advanced load up command as you see fit. In our case, we decided to implement the advanced load up with ```a``` switching case as follows:
 
-    -```https://github.com/rcdrones/UPSPACK_V3/blob/master/README_en.md```
+```cpp
+case 'a':
+{
+    unsigned short duration = 60;  // 60 minutes
+    unsigned short value = 5;      // 0.5 kWh when units = 100Wh
+    unsigned char units = 0x02;    // 100Wh units
     
-- Test Bench --> serial0 should be pointing to USB0
+    device->intermediateSetAdvancedLoadUp(duration, value, units).get();
+}
+```
 
+## Testing Steps
 
+1. The ```DeviceInfo``` returns, among other parameters, a BitMap capability, which shows if the ```AdvancedLoadUp``` command is supported or not.
+   
+2. Check the responses: 
+   
+   - look for success code (0x00).
+   - Verify operational state changes to 3 or 6.
+
+## Common Issues
+
+We encountered many issues as we were implementing the advanced load up functionality. For instance:
+
+1. Wrong Message length:
+    - Check message structure matches the CTA-2045 documentation.
+
+2. Response Not Processing:
+    - Verify opCode1 and opCode2 matching the CTA-2045 documentation.
+    - Implement debug messages in the ProcessIntermediateMessage files.
+
+3. State Not Changing:
+    - Verify device support advanced load up command (bit 6 in the BitMapCapbility)
+
+## References:
+
+1. Always check the CTA-2045 documentation, refer to page 74 to ensure appropriate responses from the device.
+2. We wrote a [progress report](https://github.com/PortlandStatePowerLab/water_heaters_testings/tree/ALU/docs/) that shows our progress as we went through this implementation.
+3. Feel free to communicate with us if you encounter any issues.
